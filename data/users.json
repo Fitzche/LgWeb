@@ -1,0 +1,26 @@
+{
+  "fitzche": {
+    "id": "fitzche",
+    "pseudo": "Fitzche",
+    "pw": "509bbda0ec10165f30c667866d0a2362762f0191577c831d2ae34a5c0413b108",
+    "createdAt": 1775217891108,
+    "lastSeen": 1775462639734,
+    "friends": [
+      "LeSantorinien"
+    ],
+    "friendRequests": [],
+    "mcName": "fitzche"
+  },
+  "LeSantorinien": {
+    "id": "LeSantorinien",
+    "pseudo": "LeSantorinien",
+    "pw": "509bbda0ec10165f30c667866d0a2362762f0191577c831d2ae34a5c0413b108",
+    "createdAt": 1775218030091,
+    "lastSeen": 1775283360392,
+    "friends": [
+      "fitzche"
+    ],
+    "friendRequests": [],
+    "mcName": "lesantorinien"
+  }
+}

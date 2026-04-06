@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LgMore — Documentation & Communauté</title>
+<style>
+:root {
+  --bg:#0d1117; --bg2:#161b27; --bg3:#1e2538; --bg4:#252d42;
+  --border:#2a3248; --border2:#3a4460;
+  --text:#c9d1e0; --text2:#8b95b0; --text3:#4a5570;
+  --accent:#7c8ff0; --accent2:#5a6fd6; --glow:rgba(124,143,240,.15);
+  --green:#4ade80; --red:#f87171; --gold:#fbbf24; --blue:#60a5fa; --purple:#c084fc;
+  --village:#4ade80; --wolf:#f87171; --solo:#fbbf24; --love:#e879f9; --special:#38bdf8;
+  --jedi:#60a5fa; --sith:#f87171;
+  --r:10px; --rsm:6px; --rlg:16px;
+  --shadow:0 4px 24px rgba(0,0,0,.4); --t:.2s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;line-height:1.6;min-height:100vh}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+button{cursor:pointer;font-family:inherit;font-size:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit}
+
+/* ── TOPBAR ── */
+#topbar{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;background:rgba(13,17,23,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:0}
+.tb-logo{font-weight:800;font-size:17px;color:var(--text);white-space:nowrap;margin-right:16px;padding-right:16px;border-right:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.tb-logo span{color:var(--accent)}
+.tb-nav{display:flex;align-items:center;flex:1;overflow-x:auto}
+.tb-nav::-webkit-scrollbar{display:none}
+.nb{background:none;border:none;border-bottom:2px solid transparent;color:var(--text2);font-size:13px;font-weight:500;padding:0 14px;height:56px;display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap;transition:var(--t)}
+.nb:hover{color:var(--text)}.nb.active{color:var(--accent);border-bottom-color:var(--accent)}
+.nb-icon{font-size:15px}
+.tb-right{display:flex;align-items:center;gap:10px;margin-left:auto;padding-left:16px}
+.tb-ava{width:32px;height:32px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;cursor:pointer;border:2px solid transparent;color:#fff;transition:var(--t)}
+.tb-ava:hover{border-color:var(--accent)}.tb-ava.on{border-color:var(--green)}
+.tb-notif{width:32px;height:32px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;font-size:15px;transition:var(--t)}
+.tb-notif:hover{background:var(--bg4)}
+.nbadge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;border-radius:50%;background:#ef4444;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff;border:2px solid var(--bg)}
+
+/* ── ACCOUNT MENU ── */
+#acmenu{display:none;position:fixed;top:64px;right:16px;z-index:250;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:8px;min-width:190px;box-shadow:var(--shadow)}
+.acm-header{padding:8px 10px 12px;border-bottom:1px solid var(--border);margin-bottom:6px}
+.acm-pseudo{font-weight:700;font-size:14px}.acm-user{font-size:11px;color:var(--text2)}
+.acm-btn{display:flex;align-items:center;gap:8px;width:100%;padding:8px 10px;border-radius:var(--rsm);background:none;border:none;color:var(--text2);font-size:13px;cursor:pointer;transition:var(--t);text-align:left}
+.acm-btn:hover{background:var(--bg3);color:var(--text)}.acm-btn.danger{color:#f87171}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh;padding-top:56px}.page.active{display:block}
+.pi{max-width:1200px;margin:0 auto;padding:32px 20px 80px}
+.pi.wide{max-width:1440px}.pi.narrow{max-width:860px}
+
+/* ── HERO ── */
+.hero{text-align:center;padding:60px 20px;background:radial-gradient(ellipse at 50% 0,rgba(124,143,240,.12) 0,transparent 70%)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--glow);border:1px solid rgba(124,143,240,.3);border-radius:99px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--accent);margin-bottom:20px}
+.hero h1{font-size:48px;font-weight:900;line-height:1.1;margin-bottom:16px;letter-spacing:-1px}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:17px;color:var(--text2);max-width:600px;margin:0 auto 32px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--rsm);font-size:13px;font-weight:600;border:none;transition:var(--t);cursor:pointer;text-decoration:none}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--text)}.btn-outline:hover{background:var(--bg3)}
+.btn-danger{background:#ef4444;color:#fff}.btn-danger:hover{background:#dc2626}
+.btn-success{background:#22c55e;color:#fff}.btn-success:hover{background:#16a34a}
+.btn-sm{padding:6px 14px;font-size:12px}.btn-lg{padding:12px 28px;font-size:15px}
+
+/* ── CARDS ── */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:20px;transition:var(--t)}
+.card:hover{border-color:var(--border2)}.card-sm{padding:14px 16px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:700px){.g2,.g3{grid-template-columns:1fr}}
+
+/* ── ROLE CARDS ── */
+.rc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:18px;position:relative;overflow:hidden;transition:all var(--t)}
+.rc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r) var(--r) 0 0}
+.rc:hover{transform:translateY(-2px)}
+.rc[data-c=village]{border-color:rgba(74,222,128,.25)}.rc[data-c=village]::before{background:var(--village)}.rc[data-c=village]:hover{border-color:var(--village)}
+.rc[data-c=wolf]{border-color:rgba(248,113,113,.25)}.rc[data-c=wolf]::before{background:var(--wolf)}.rc[data-c=wolf]:hover{border-color:var(--wolf)}
+.rc[data-c=solo]{border-color:rgba(251,191,36,.25)}.rc[data-c=solo]::before{background:var(--solo)}.rc[data-c=solo]:hover{border-color:var(--solo)}
+.rc[data-c=love]{border-color:rgba(232,121,249,.25)}.rc[data-c=love]::before{background:var(--love)}.rc[data-c=love]:hover{border-color:var(--love)}
+.rc[data-c=special]{border-color:rgba(56,189,248,.25)}.rc[data-c=special]::before{background:var(--special)}.rc[data-c=special]:hover{border-color:var(--special)}
+.rc-name{font-size:15px;font-weight:700;margin-bottom:6px}
+.rc[data-c=village] .rc-name{color:var(--village)}.rc[data-c=wolf] .rc-name{color:var(--wolf)}
+.rc[data-c=solo] .rc-name{color:var(--solo)}.rc[data-c=love] .rc-name{color:var(--love)}
+.rc[data-c=special] .rc-name{color:var(--special)}
+.rc-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px}
+.badges{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.blum{background:rgba(74,222,128,.15);color:var(--green)}.bobs{background:rgba(248,113,113,.15);color:var(--red)}
+.bneu{background:rgba(148,163,184,.12);color:#94a3b8}.bdan{background:rgba(251,146,60,.15);color:#fb923c}
+.bunk{background:rgba(167,139,250,.15);color:#a78bfa}.binf{background:rgba(56,189,248,.12);color:#38bdf8}
+.bwip{background:rgba(251,191,36,.1);color:var(--gold)}.bxp{background:rgba(124,143,240,.1);color:var(--accent)}
+.rc-desc{font-size:12.5px;color:var(--text);line-height:1.65;margin-bottom:8px}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:11px;padding:2px 8px;border-radius:99px;border:1px solid var(--border);color:var(--text2);background:var(--bg)}
+.tag.cmd{border-color:rgba(124,143,240,.3);color:#a5b4fc;background:rgba(124,143,240,.06)}
+.tag.power{border-color:rgba(56,189,248,.3);color:#67e8f9;background:rgba(56,189,248,.06)}
+.tag.passive{border-color:rgba(74,222,128,.2);color:#86efac;background:rgba(74,222,128,.04)}
+.tag.night{border-color:rgba(167,139,250,.25);color:#c4b5fd;background:rgba(167,139,250,.05)}
+
+/* ── FILTERS ── */
+.cf-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.cf{background:none;border:1px solid var(--border);color:var(--text2);padding:5px 14px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;transition:var(--t);text-transform:uppercase;letter-spacing:.4px}
+.cf:hover,.cf.active{background:var(--bg3);color:var(--text)}
+.cf[data-c=village].active{border-color:var(--village);color:var(--village)}
+.cf[data-c=wolf].active{border-color:var(--wolf);color:var(--wolf)}
+.cf[data-c=solo].active{border-color:var(--solo);color:var(--solo)}
+.cf[data-c=love].active{border-color:var(--love);color:var(--love)}
+.cf[data-c=special].active{border-color:var(--special);color:var(--special)}
+
+/* ── SEARCH ── */
+.sb{position:relative;max-width:360px}
+.sb input{width:100%;padding:9px 14px 9px 36px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);color:var(--text);outline:none;transition:var(--t)}
+.sb input:focus{border-color:var(--accent)}.sb input::placeholder{color:var(--text3)}
+.sb svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--text2)}
+
+/* ── SECTION HDR ── */
+.sh{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.si{width:42px;height:42px;border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.st{font-size:22px;font-weight:800}.ss{font-size:13px;color:var(--text2);margin-top:2px}
+
+/* ── INNER TABS ── */
+.itabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px;overflow-x:auto}
+.itabs::-webkit-scrollbar{display:none}
+.it{background:none;border:none;border-bottom:2px solid transparent;color:var(--text2);padding:10px 18px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;transition:var(--t)}
+.it:hover{color:var(--text)}.it.active{color:var(--accent);border-bottom-color:var(--accent)}
+.ip{display:none}.ip.active{display:block}
+
+/* ── FORMS ── */
+.fg{margin-bottom:16px}
+.fl{display:block;font-size:12px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.fi{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);padding:10px 14px;color:var(--text);outline:none;transition:var(--t)}
+.fi:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}.fi::placeholder{color:var(--text3)}
+.fe{font-size:12px;color:#ef4444;margin-top:4px;display:none}.fe.v{display:block}
+.fs{font-size:12px;color:#22c55e;margin-top:4px;display:none}.fs.v{display:block}
+
+/* ── AUTH ── */
+.auth-wrap{max-width:440px;margin:0 auto}
+.auth-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rlg);padding:36px}
+.auth-title{font-size:22px;font-weight:800;margin-bottom:6px}
+.auth-sub{font-size:13px;color:var(--text2);margin-bottom:28px}
+.auth-sw{text-align:center;font-size:13px;color:var(--text2);margin-top:20px}
+.auth-sw a{color:var(--accent);cursor:pointer}
+
+/* ── PROFILE ── */
+.ph{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rlg);padding:28px;display:flex;gap:24px;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap}
+.pava{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#a78bfa);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;flex-shrink:0;border:3px solid var(--accent)}
+.pmeta{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap}
+.pmi{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:5px}
+.pmv{font-weight:700;color:var(--text)}
+
+/* ── PD STATS ── */
+.pd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:12px}
+.pd-stat{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;text-align:center}
+.pd-val{font-size:24px;font-weight:800;color:var(--accent);line-height:1.1}
+.pd-lbl{font-size:10px;color:var(--text2);margin-top:4px;text-transform:uppercase;letter-spacing:.4px}
+
+/* ── PVP STATS ── */
+.pvp-section{background:var(--bg2);border:1px solid rgba(248,113,113,.25);border-radius:var(--r);padding:16px 18px;margin-top:16px}
+.pvp-title{font-weight:700;font-size:14px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.pvp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pvp-stat{background:var(--bg3);border:1px solid rgba(248,113,113,.15);border-radius:var(--rsm);padding:12px;text-align:center}
+.pvp-val{font-size:22px;font-weight:800;color:var(--red);line-height:1.1}
+.pvp-lbl{font-size:10px;color:var(--text2);margin-top:3px;text-transform:uppercase;letter-spacing:.4px}
+
+/* ── STONES ── */
+.stone{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600;border:1px solid;margin:3px;transition:var(--t)}
+.stone.used{opacity:1}.stone.unused{opacity:.22}
+
+/* ── SPECIAL ITEMS ── */
+.si-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.si-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid;cursor:default;transition:var(--t)}
+.si-chip:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+
+/* ── GRADES ── */
+.grade-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600;border:1px solid rgba(251,191,36,.35);color:#fbbf24;background:rgba(251,191,36,.08);margin:3px}
+.death-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:6px;font-size:12px;color:var(--text);border:1px solid var(--border);background:var(--bg3);margin:3px;font-style:italic}
+
+/* ── HISTORY / GAMENOTE ── */
+.note-row{cursor:pointer;transition:var(--t)}.note-row:hover td{background:rgba(124,143,240,.05)!important}
+.note-panel{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);padding:14px 16px;animation:fadeIn .18s ease}
+.note-players{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.np{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;font-size:12px;border:1px solid var(--border);background:var(--bg4)}
+.np-win{border-color:rgba(74,222,128,.35);background:rgba(74,222,128,.07)}
+.np-role{font-size:10px;color:var(--text2);font-style:italic}
+.np-name{font-weight:600}.np-kills{font-size:10px;color:var(--text3)}
+.game-type-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:1px 7px;border-radius:4px;text-transform:uppercase;letter-spacing:.3px;margin-left:6px;vertical-align:middle}
+
+/* ── ITEMS CATALOG ── */
+.catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;margin-top:20px}
+.catalog-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:22px;position:relative;overflow:hidden;transition:all var(--t)}
+.catalog-card:hover{transform:translateY(-2px);border-color:var(--border2)}
+.catalog-stripe{position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r) var(--r) 0 0}
+.catalog-icon{font-size:38px;margin-bottom:12px;display:block}
+.catalog-name{font-size:16px;font-weight:800;margin-bottom:4px}
+.catalog-key{font-family:'Courier New',monospace;font-size:11px;color:var(--text3);background:var(--bg4);padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:10px}
+.catalog-mode{font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:12px}
+.catalog-desc{font-size:13px;color:var(--text);line-height:1.7;margin-bottom:12px}
+.catalog-how{margin-top:12px;padding:10px 12px;background:var(--bg3);border-radius:var(--rsm);font-size:12px;color:var(--text2);border-left:3px solid var(--accent)}
+.catalog-how b{color:var(--text)}
+.add-item-box{background:var(--bg2);border:2px dashed var(--border2);border-radius:var(--r);padding:24px;text-align:center;color:var(--text2);font-size:13px}
+.add-item-box code{background:var(--bg3);padding:2px 7px;border-radius:4px;font-family:monospace;font-size:12px;color:#e5c07b;display:block;margin:12px auto;max-width:600px;text-align:left;line-height:2}
+
+/* ── FRIENDS ── */
+.friend-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;display:flex;align-items:center;gap:14px;transition:var(--t)}
+.friend-item:hover{border-color:var(--border2)}
+.fava{width:42px;height:42px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0;border:2px solid transparent}
+.fava.on{border-color:var(--green)}
+.fi2{flex:1;min-width:0}.fp{font-weight:700;font-size:14px}.fu{font-size:11px;color:var(--text2)}.fst{font-size:12px;color:var(--text2);margin-top:2px}
+.fa{display:flex;gap:8px;flex-shrink:0}
+.req-item{background:var(--bg2);border:1px solid rgba(251,191,36,.2);border-radius:var(--r);padding:14px 16px;display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.req-actions{display:flex;gap:8px;margin-left:auto}
+
+/* ── WIN BADGE ── */
+.win-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.wb-win{background:rgba(74,222,128,.15);color:var(--green)}.wb-loss{background:rgba(248,113,113,.1);color:var(--red)}
+
+/* ── STATUS DOT ── */
+.status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
+.dot-on{background:var(--green)}.dot-off{background:var(--text3)}
+
+/* ── MODAL ── */
+.mo{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s}
+.mo.open{opacity:1;pointer-events:all}
+.md{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rlg);padding:28px;width:100%;max-width:520px;transform:translateY(20px);transition:transform .2s;max-height:90vh;overflow-y:auto}
+.mo.open .md{transform:translateY(0)}
+.md-title{font-size:18px;font-weight:800;margin-bottom:6px}.md-sub{font-size:13px;color:var(--text2);margin-bottom:20px}
+.md-close{float:right;background:none;border:none;color:var(--text2);font-size:20px;cursor:pointer;line-height:1;margin-top:-2px}.md-close:hover{color:var(--text)}
+
+/* ── MISC ── */
+.pill{padding:3px 10px;border-radius:99px;font-size:11.5px;font-weight:600;border:1px solid;display:inline-flex;align-items:center;gap:4px}
+.pg{border-color:rgba(74,222,128,.3);color:var(--green);background:rgba(74,222,128,.08)}
+.pr{border-color:rgba(248,113,113,.3);color:var(--red);background:rgba(248,113,113,.08)}
+.py{border-color:rgba(251,191,36,.3);color:var(--gold);background:rgba(251,191,36,.08)}
+.divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+.info-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;font-size:13px;color:var(--text2);line-height:1.65}.info-box b{color:var(--text)}
+.empty{text-align:center;padding:48px 20px;color:var(--text2)}
+.empty-icon{font-size:42px;margin-bottom:12px}.empty-text{font-size:14px}.empty-sub{font-size:12px;color:var(--text3);margin-top:6px}
+.w100{width:100%}.flex{display:flex}.ic{align-items:center}.jb{justify-content:space-between}
+.gap8{gap:8px}.gap12{gap:12px}.gap16{gap:16px}
+.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}.mt20{margin-top:20px}.mt24{margin-top:24px}
+.mb8{margin-bottom:8px}.mb12{margin-bottom:12px}.mb16{margin-bottom:16px}.mb20{margin-bottom:20px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:var(--bg3);color:var(--text2);font-weight:600;padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+tr:last-child td{border-bottom:none}
+code{background:var(--bg4);padding:1px 6px;border-radius:3px;font-family:monospace;font-size:11.5px;color:#e5c07b}
+.cb{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);padding:14px 16px;font-family:monospace;font-size:12px;color:#98c379;overflow-x:auto;margin:10px 0;line-height:1.6}
+.cb .kw{color:#c678dd}.cb .cm{color:#5c6370;font-style:italic}.cb .str{color:#e5c07b}
+.ev-card{background:var(--bg2);border:1px solid rgba(124,143,240,.2);border-radius:var(--r);padding:16px;position:relative;overflow:hidden}
+.ev-card::before{content:'';position:absolute;left:0;top:0;width:4px;height:100%;background:var(--accent);border-radius:var(--r) 0 0 var(--r)}
+.ev-name{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.ev-desc{font-size:13px;color:var(--text);line-height:1.6}.ev-note{margin-top:8px;font-size:11.5px;color:var(--text2);font-style:italic;border-top:1px solid var(--border);padding-top:7px}
+.sc-card{background:var(--bg2);border:1px solid rgba(251,191,36,.22);border-radius:var(--r);padding:20px}
+.sc-name{font-size:16px;font-weight:700;color:var(--gold);margin-bottom:8px}
+.sc-desc{font-size:13px;color:var(--text);line-height:1.65}
+.sc-fx{margin-top:12px;padding:10px 14px;background:var(--bg3);border-radius:var(--rsm);border:1px solid var(--border);font-size:12.5px;color:var(--text)}
+.reg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+@media(max-width:700px){.reg-grid{grid-template-columns:1fr}}
+.reg{border-radius:var(--r);padding:20px;border:1px solid}
+.regT{background:rgba(248,113,113,.06);border-color:rgba(248,113,113,.25)}
+.regO{background:rgba(56,189,248,.06);border-color:rgba(56,189,248,.25)}
+.regE{background:rgba(251,191,36,.06);border-color:rgba(251,191,36,.25)}
+.reg-title{font-size:16px;font-weight:700;margin-bottom:12px}
+.regT .reg-title{color:var(--wolf)}.regO .reg-title{color:var(--special)}.regE .reg-title{color:var(--solo)}
+.reg-row{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12.5px}.reg-row:last-child{border-bottom:none}
+.reg-v{font-weight:700;font-size:13px;min-width:42px;flex-shrink:0}
+.regT .reg-v{color:var(--wolf)}.regO .reg-v{color:var(--special)}.regE .reg-v{color:var(--solo)}
+.star-card{border-radius:var(--r);padding:18px;border:1px solid;position:relative;overflow:hidden}
+.star-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--r) var(--r) 0 0}
+.star-card[data-s=jedi]{background:rgba(96,165,250,.07);border-color:rgba(96,165,250,.25)}.star-card[data-s=jedi]::before{background:var(--jedi)}
+.star-card[data-s=sith]{background:rgba(248,113,113,.07);border-color:rgba(248,113,113,.25)}.star-card[data-s=sith]::before{background:var(--sith)}
+.star-card[data-s=neutral]{background:rgba(251,191,36,.06);border-color:rgba(251,191,36,.22)}.star-card[data-s=neutral]::before{background:var(--gold)}
+.sn{font-size:15px;font-weight:700;margin-bottom:2px}
+.star-card[data-s=jedi] .sn{color:var(--jedi)}.star-card[data-s=sith] .sn{color:var(--sith)}.star-card[data-s=neutral] .sn{color:var(--gold)}
+.sa{font-size:11px;color:var(--text2);margin-bottom:10px}.sd{font-size:13px;color:var(--text);line-height:1.65}
+.seq{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.els{background:rgba(96,165,250,.12);color:#93c5fd;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600}
+.egun{background:rgba(251,191,36,.1);color:#fcd34d;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.fi-anim{animation:fadeIn .2s ease both}
+</style>
+</head>
+<body>
+
+<!-- ══ TOPBAR ══ -->
+<nav id="topbar">
+  <div class="tb-logo">🐺 <span>Lg</span>More</div>
+  <div class="tb-nav">
+    <button class="nb active" onclick="nav('home')"><span class="nb-icon">🏠</span>Accueil</button>
+    <button class="nb" onclick="nav('lg')"><span class="nb-icon">🐺</span>Loup-Garou</button>
+    <button class="nb" onclick="nav('charact')"><span class="nb-icon">📜</span>CharactUHC</button>
+    <button class="nb" onclick="nav('star')"><span class="nb-icon">⭐</span>StarParty</button>
+    <button class="nb" onclick="nav('modes')"><span class="nb-icon">🎮</span>Autres modes</button>
+    <button class="nb" onclick="nav('guide')"><span class="nb-icon">👤</span>Guide joueur</button>
+    <button class="nb" onclick="nav('dev')"><span class="nb-icon">💻</span>Doc Dev</button>
+    <button class="nb" onclick="nav('items')"><span class="nb-icon">🎒</span>Items spéciaux</button>
+  </div>
+  <div class="tb-right">
+    <div class="tb-notif" id="notif-btn" style="display:none" onclick="nav('account');showIT('account','requests')" title="Demandes d'amis">
+      🔔<span class="nbadge" id="notif-n">0</span>
+    </div>
+    <div class="tb-ava" id="tb-ava" onclick="toggleMenu()" title="Mon compte">?</div>
+  </div>
+</nav>
+
+<div id="acmenu">
+  <div id="acm-li" style="display:none">
+    <div class="acm-header">
+      <div class="acm-pseudo" id="acm-pseudo"></div>
+      <div class="acm-user" id="acm-user"></div>
+    </div>
+    <button class="acm-btn" onclick="nav('account');showIT('account','profile');toggleMenu()">👤 Mon profil</button>
+    <button class="acm-btn" onclick="nav('account');showIT('account','friends');loadFriends();toggleMenu()">👥 Amis</button>
+    <button class="acm-btn" onclick="nav('account');showIT('account','settings');toggleMenu()">⚙️ Paramètres</button>
+    <hr class="divider" style="margin:6px 0">
+    <button class="acm-btn danger" onclick="logout();toggleMenu()">🚪 Déconnexion</button>
+  </div>
+  <div id="acm-lo">
+    <button class="btn btn-primary w100 mb8" onclick="openM('m-login');toggleMenu()">Se connecter</button>
+    <button class="btn btn-outline w100" onclick="openM('m-register');toggleMenu()">Créer un compte</button>
+  </div>
+</div>
+
+<!-- ══ PAGE: HOME ══ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-badge">🐺 Plugin Minecraft · Spigot 1.8</div>
+    <h1>Bienvenue sur<br><span>LgMore</span></h1>
+    <p class="hero-sub">Hub multi-jeux : Loup-Garou UHC, CharactUHC, StarParty et plus. Documentation, guides et communauté.</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary btn-lg" onclick="nav('lg')">🐺 Voir les rôles</button>
+      <button class="btn btn-outline btn-lg" onclick="nav('guide')">📖 Guide joueur</button>
+      <button class="btn btn-outline btn-lg" onclick="openM('m-register')">👤 Créer un compte</button>
+    </div>
+  </div>
+  <div class="pi">
+    <div class="g3 mb20">
+      <div class="card" style="text-align:center;padding:28px">
+        <div style="font-size:36px;margin-bottom:12px">🐺</div>
+        <div style="font-weight:700;font-size:16px;margin-bottom:8px">Loup-Garou UHC</div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:16px">55+ rôles, scénarios, événements et registres.</div>
+        <button class="btn btn-primary btn-sm" onclick="nav('lg')">Découvrir →</button>
+      </div>
+      <div class="card" style="text-align:center;padding:28px">
+        <div style="font-size:36px;margin-bottom:12px">🎒</div>
+        <div style="font-weight:700;font-size:16px;margin-bottom:8px">Items Spéciaux</div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:16px">7 items gérés par SpecialItemHolder avec leurs effets.</div>
+        <button class="btn btn-primary btn-sm" onclick="nav('items')">Découvrir →</button>
+      </div>
+      <div class="card" style="text-align:center;padding:28px">
+        <div style="font-size:36px;margin-bottom:12px">👥</div>
+        <div style="font-weight:700;font-size:16px;margin-bottom:8px">Communauté</div>
+        <div style="font-size:13px;color:var(--text2);margin-bottom:16px">Profil, statistiques, PvP, historique et amis.</div>
+        <button class="btn btn-primary btn-sm" onclick="nav('account')">Mon espace →</button>
+      </div>
+    </div>
+    <div class="info-box" id="api-status-box">
+      <div class="flex ic gap8"><span id="api-dot" class="status-dot dot-off"></span><span id="api-status-text">Vérification de la connexion au serveur…</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: LG ══ -->
+<div id="page-lg" class="page">
+  <div class="pi wide">
+    <div class="sh">
+      <div class="si" style="background:rgba(248,113,113,.1)">🐺</div>
+      <div><div class="st">Loup-Garou UHC <span id="lg-count" style="font-size:13px;font-weight:400;color:var(--text2);margin-left:6px"></span></div><div class="ss">Mode principal · 55+ rôles · Votes · Registres · Auras</div></div>
+    </div>
+    <div class="itabs">
+      <button class="it active" onclick="showIT('lg','roles')">🃏 Rôles</button>
+      <button class="it" onclick="showIT('lg','events')">🎲 Événements</button>
+      <button class="it" onclick="showIT('lg','scenarios')">🎭 Scénarios</button>
+      <button class="it" onclick="showIT('lg','registres')">📊 Registres</button>
+    </div>
+    <div id="lg-roles" class="ip active">
+      <div class="flex gap12 mb16" style="flex-wrap:wrap;align-items:flex-start">
+        <div class="sb mb0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input placeholder="Rechercher…" oninput="renderRoles(this.value)" id="role-q"></div>
+        <div class="cf-wrap mb0">
+          <button class="cf active" data-c="all" onclick="filterCamp('all',this)">Tous</button>
+          <button class="cf" data-c="village" onclick="filterCamp('village',this)">🟢 Villageois</button>
+          <button class="cf" data-c="wolf" onclick="filterCamp('wolf',this)">🔴 Loups</button>
+          <button class="cf" data-c="solo" onclick="filterCamp('solo',this)">🟡 Solitaires</button>
+          <button class="cf" data-c="love" onclick="filterCamp('love',this)">🟣 Amoureux</button>
+          <button class="cf" data-c="special" onclick="filterCamp('special',this)">🔵 Spéciaux</button>
+        </div>
+      </div>
+      <div id="roles-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px"></div>
+    </div>
+    <div id="lg-events" class="ip"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px" id="events-grid"></div></div>
+    <div id="lg-scenarios" class="ip"><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px" id="scenarios-grid"></div></div>
+    <div id="lg-registres" class="ip">
+      <div class="info-box mb20">Les registres ne sont actifs qu'avec le scénario <b>Théâtre</b>. Jauges 0–100+ influencées par les actions des joueurs. Chaque seuil déclenche des effets.</div>
+      <div class="reg-grid">
+        <div class="reg regT"><div class="reg-title">🔴 Tragique</div>
+          <div class="reg-row"><span class="reg-v">&gt;25</span><span>+½ cœur au tueur</span></div>
+          <div class="reg-row"><span class="reg-v">actif</span><span>Taille des groupes réduite si taux%</span></div>
+          <div class="reg-row"><span class="reg-v">20%+</span><span>Comédien : aura/kills/effets aléatoires</span></div>
+          <div class="reg-row"><span class="reg-v">actif</span><span>Ermite +10% résistance · L.Craintif +5% résistance</span></div>
+          <div class="reg-row"><span class="reg-v">≥100</span><span>TP général de tous les joueurs vivants</span></div>
+        </div>
+        <div class="reg regO"><div class="reg-title">🔵 Oratoire</div>
+          <div class="reg-row"><span class="reg-v">actif</span><span>Taille des groupes augmentée si taux%</span></div>
+          <div class="reg-row"><span class="reg-v">20%+</span><span>Comédien : voit les votes du plus voté</span></div>
+          <div class="reg-row"><span class="reg-v">actif</span><span>Ermite −10% force · L.Craintif −10% force</span></div>
+          <div class="reg-row"><span class="reg-v">≥80</span><span>Vote supplémentaire déclenché</span></div>
+          <div class="reg-row"><span class="reg-v">≥100</span><span>3 joueurs exposés partiellement</span></div>
+        </div>
+        <div class="reg regE"><div class="reg-title">🟡 Épique</div>
+          <div class="reg-row"><span class="reg-v">taux/6%</span><span>Speed I au tueur après un kill</span></div>
+          <div class="reg-row"><span class="reg-v">taux/3%</span><span>Si victime = loup → tueur révélé</span></div>
+          <div class="reg-row"><span class="reg-v">20%+</span><span>Comédien : résistance ≈ taux/5%</span></div>
+          <div class="reg-row"><span class="reg-v">≥100</span><span>🌕 Pleine Lune : nuit forcée, rôles brumés 5 min</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: CHARACT ══ -->
+<div id="page-charact" class="page">
+  <div class="pi narrow">
+    <div class="sh"><div class="si" style="background:rgba(56,189,248,.1)">📜</div><div><div class="st">CharactUHC — Rôles JSON</div><div class="ss">Rôles personnalisables · Jauges · Conditions · Actions imbriquées</div></div></div>
+    <div class="itabs">
+      <button class="it active" onclick="showIT('charact','intro')">Présentation</button>
+      <button class="it" onclick="showIT('charact','gamemode')">Gamemode</button>
+      <button class="it" onclick="showIT('charact','role')">Fichier Rôle</button>
+      <button class="it" onclick="showIT('charact','action')">Actions</button>
+      <button class="it" onclick="showIT('charact','jauge')">Jauges</button>
+      <button class="it" onclick="showIT('charact','example')">Exemple</button>
+    </div>
+    <div id="charact-intro" class="ip active"><div class="info-box mb16"><b>CharactUHC</b> — rôles définis en fichiers <code>.json</code>. Chaque rôle a ses stats, pouvoirs, jauges et commandes. Plusieurs listes se cumulent (un joueur peut être "Mage Elfe").</div><div class="g2"><div class="card card-sm"><b style="color:var(--special)">📁 Fichiers</b><div style="font-size:13px;margin-top:8px;line-height:1.7"><code>Gamemodes/monJeu.json</code><br><code>roles/guerrier.json</code><br>Lancer : <code>/lg startCharact monJeu.json</code></div></div><div class="card card-sm"><b style="color:var(--green)">✅ Démarrage</b><div style="font-size:13px;margin-top:8px;line-height:1.7">1. Créez votre gamemode<br>2. Créez vos rôles<br>3. <code>/lg startCharact [nom.json]</code><br>4. Test : <code>/lga jsonTest roles/mage.json</code></div></div></div></div>
+    <div id="charact-gamemode" class="ip"><div class="cb"><span class="cm">// Gamemodes/monJeu.json</span>
+{ <span class="str">"hasMinageinage"</span>: <span class="kw">false</span>, <span class="str">"minageTime"</span>: <span class="kw">10</span>, <span class="str">"boostMinage"</span>: <span class="kw">1</span>,
+  <span class="str">"roleListNames"</span>: [{ <span class="str">"listName"</span>: <span class="str">"classes"</span>, <span class="str">"timeApplication"</span>: <span class="kw">5</span> }],
+  <span class="str">"conditions"</span>: { <span class="str">"porteOuverte"</span>: <span class="kw">false</span> } }</div></div>
+    <div id="charact-role" class="ip"><div class="cb"><span class="cm">// roles/guerrier.json</span>
+{ <span class="str">"name"</span>: <span class="str">"Guerrier"</span>, <span class="str">"camp"</span>: <span class="str">"Vertueux"</span>, <span class="str">"roleListName"</span>: <span class="str">"classes"</span>,
+  <span class="str">"strenght"</span>: <span class="kw">0.3</span>, <span class="str">"resistance"</span>: <span class="kw">0.2</span>, <span class="str">"boostHealth"</span>: <span class="kw">4</span>,
+  <span class="str">"reliveTry"</span>: <span class="kw">1</span>, <span class="str">"lostStrenght"</span>: <span class="kw">0.1</span>, <span class="str">"lostResis"</span>: <span class="kw">0.05</span>, <span class="str">"lostHealth"</span>: <span class="kw">2.0</span>,
+  <span class="str">"attackAction"</span>: { }, <span class="str">"killAction"</span>: { }, <span class="str">"deathAction"</span>: { },
+  <span class="str">"commands"</span>: [{ <span class="str">"command"</span>: <span class="str">"charge"</span>, <span class="str">"action"</span>: { } }],
+  <span class="str">"jauges"</span>: [{ <span class="cm">/* voir onglet Jauges */</span> }] }</div></div>
+    <div id="charact-action" class="ip"><div class="cb">{ <span class="str">"type"</span>: <span class="str">"damage"</span>, <span class="str">"force"</span>: <span class="kw">4.0</span>, <span class="str">"timeForce"</span>: <span class="kw">100</span>, <span class="str">"proba"</span>: <span class="kw">80</span>,
+  <span class="str">"onlySelf"</span>: <span class="kw">false</span>, <span class="str">"distance"</span>: <span class="kw">15</span>, <span class="str">"commandTarget"</span>: <span class="kw">false</span>,
+  <span class="str">"actions"</span>: [], <span class="str">"delayedActions"</span>: [{ <span class="str">"action"</span>: {}, <span class="str">"time"</span>: <span class="kw">5</span> }] }</div></div>
+    <div id="charact-jauge" class="ip"><div class="cb">{ <span class="str">"name"</span>: <span class="str">"rage"</span>, <span class="str">"defaultValue"</span>: <span class="kw">0</span>, <span class="str">"maxValue"</span>: <span class="kw">5</span>,
+  <span class="str">"resetOnFinish"</span>: <span class="kw">true</span>, <span class="str">"iteration"</span>: <span class="kw">99</span>, <span class="str">"displayed"</span>: <span class="kw">true</span>,
+  <span class="str">"action"</span>: { <span class="str">"type"</span>: <span class="str">"regen"</span>, <span class="str">"force"</span>: <span class="kw">1</span>, <span class="str">"timeForce"</span>: <span class="kw">60</span>, <span class="str">"onlySelf"</span>: <span class="kw">true</span> } }</div></div>
+    <div id="charact-example" class="ip"><div class="cb"><span class="cm">// Nécromancien complet</span>
+{ <span class="str">"name"</span>:<span class="str">"Nécromancien"</span>, <span class="str">"camp"</span>:<span class="str">"Maléfiques"</span>, <span class="str">"roleListName"</span>:<span class="str">"classes"</span>,
+  <span class="str">"strenght"</span>:<span class="kw">0.8</span>, <span class="str">"resistance"</span>:<span class="kw">0.3</span>, <span class="str">"boostHealth"</span>:<span class="kw">2</span>,
+  <span class="str">"attackAction"</span>:{ <span class="str">"type"</span>:<span class="str">"jauge"</span>,<span class="str">"jauge"</span>:<span class="str">"ames"</span>,<span class="str">"jaugeAdd"</span>:<span class="kw">1</span>,<span class="str">"onlySelf"</span>:<span class="kw">true</span> },
+  <span class="str">"deathAction"</span>:{ <span class="str">"type"</span>:<span class="str">"blindness"</span>,<span class="str">"force"</span>:<span class="kw">1</span>,<span class="str">"timeForce"</span>:<span class="kw">100</span>,<span class="str">"distance"</span>:<span class="kw">15</span> },
+  <span class="str">"jauges"</span>:[{<span class="str">"name"</span>:<span class="str">"ames"</span>,<span class="str">"maxValue"</span>:<span class="kw">5</span>,<span class="str">"resetOnFinish"</span>:<span class="kw">true</span>,<span class="str">"iteration"</span>:<span class="kw">99</span>,<span class="str">"displayed"</span>:<span class="kw">true</span>,
+    <span class="str">"action"</span>:{<span class="str">"type"</span>:<span class="str">"regen"</span>,<span class="str">"force"</span>:<span class="kw">1</span>,<span class="str">"timeForce"</span>:<span class="kw">80</span>,<span class="str">"onlySelf"</span>:<span class="kw">true</span>}}] }</div></div>
+  </div>
+</div>
+
+<!-- ══ PAGE: STAR ══ -->
+<div id="page-star" class="page">
+  <div class="pi wide">
+    <div class="sh"><div class="si" style="background:rgba(251,191,36,.1)">⭐</div><div><div class="st">StarParty — Star Wars</div><div class="ss">15–17 joueurs · Jedi vs Sith · PvP à rôles découverts</div></div></div>
+    <div class="g2 mb20">
+      <div class="info-box"><b>Jedi 🔵</b> : Luke, Obi-Wan, Qui-Gon, Mace Windu, Leïa, Han Solo, Chewbacca, Yoda</div>
+      <div class="info-box"><b>Sith 🔴</b> : Dark Vador, Palpatine, Dooku, Dark Maul, Grievous, Stormtrooper, Garde Impérial · <b>Neutre 🟡</b> : Jango Fett</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px" id="star-grid"></div>
+  </div>
+</div>
+
+<!-- ══ PAGE: AUTRES MODES ══ -->
+<div id="page-modes" class="page">
+  <div class="pi">
+    <div class="sh"><div class="si" style="background:rgba(96,165,250,.1)">🎮</div><div><div class="st">Autres modes de jeu</div><div class="ss">Bedwars · ClockTower · SettlerGame · TeamSwapper</div></div></div>
+    <div class="g2">
+      <div class="card"><div style="font-size:28px;margin-bottom:10px">🛏️</div><div style="font-weight:700;font-size:17px;margin-bottom:8px">Bedwars</div><span class="pill py">Partiel</span><p style="font-size:13px;color:var(--text2);margin:12px 0">Défendez votre lit, détruisez ceux des autres. Équipes, générateurs, traders.</p><div style="font-size:13px"><b>Présent :</b> structure, spawns, générateurs, win/damageBed<br><b>Manque :</b> générateurs actifs, shop, victoire</div></div>
+      <div class="card"><div style="font-size:28px;margin-bottom:10px">🏰</div><div style="font-weight:700;font-size:17px;margin-bottom:8px">ClockTower</div><span class="pill pr">Squelette</span><p style="font-size:13px;color:var(--text2);margin:12px 0">Phases Nuit/Matin/Discussion/Vote. 1 rôle actif (Diablotin).</p><div style="font-size:13px"><b>Manque :</b> 19 rôles commentés, logique complète</div></div>
+      <div class="card"><div style="font-size:28px;margin-bottom:10px">🏘️</div><div style="font-weight:700;font-size:17px;margin-bottom:8px">SettlerGame</div><span class="pill pr">Squelette</span><p style="font-size:13px;color:var(--text2);margin:12px 0">Colonisation en équipes. Commandes : <code>/lg settlerStart</code></p></div>
+      <div class="card"><div style="font-size:28px;margin-bottom:10px">🔄</div><div style="font-weight:700;font-size:17px;margin-bottom:8px">TeamSwapper</div><span class="pill pg">Complet</span><p style="font-size:13px;color:var(--text2);margin:12px 0">Variante LG en équipes. Vote → le plus voté change d'équipe. 2–5 équipes.</p><div style="font-size:13px">🔴🔵🩷🟢🟡</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: GUIDE ══ -->
+<div id="page-guide" class="page">
+  <div class="pi narrow">
+    <div class="sh"><div class="si" style="background:rgba(74,222,128,.1)">👤</div><div><div class="st">Guide Joueur</div><div class="ss">Tout ce qu'il faut savoir pour jouer</div></div></div>
+    <div class="itabs">
+      <button class="it active" onclick="showIT('guide','start')">Premiers pas</button>
+      <button class="it" onclick="showIT('guide','play')">Jouer</button>
+      <button class="it" onclick="showIT('guide','host')">Organiser</button>
+      <button class="it" onclick="showIT('guide','cmds')">Commandes</button>
+    </div>
+    <div id="guide-start" class="ip active"><div class="info-box mb16"><b>Livre "Navigation" (slot 0)</b> → Clic droit → Menu principal. Accès à tous les modes.</div><div class="info-box"><b>Menu :</b> 🧑 Créer une partie (OP) · ⚙️ Config · 🧑 Profil · 🏹 StarParty · 🎵 Rejoindre · ⚔️ Zone PvP<br><br><b>Commandes rapides :</b> <code>/hub</code> → Lobby · <code>/rejoin</code> → Reprendre · <code>/lg stat [pseudo]</code> → Stats</div></div>
+    <div id="guide-play" class="ip">
+      <div style="overflow-x:auto"><table><thead><tr><th>Moment</th><th>Ce qui se passe</th></tr></thead><tbody>
+        <tr><td>t = −20s</td><td>Compte à rebours, structures placées</td></tr>
+        <tr><td>t = −10s</td><td>Kit distribué + TP aléatoire (&gt;1000 blocs)</td></tr>
+        <tr><td>t = 0</td><td>Phase de survie commence</td></tr>
+        <tr><td>t = 20 min</td><td>Attribution des rôles → <code>/lg role</code></td></tr>
+        <tr><td>Chaque épisode</td><td>Vote · Pouvoirs rechargés · Événements possibles</td></tr>
+      </tbody></table></div>
+      <div class="info-box mt16"><b>Auras :</b> <span style="color:var(--green)">● Lumineuse</span> village · <span style="color:var(--red)">● Obscure</span> loup · <span style="color:#94a3b8">● Neutre</span> indéterminée · <span style="color:#fb923c">● Dangereuse</span> attention</div>
+    </div>
+    <div id="guide-host" class="ip"><div class="cb">/lga Game create [nom]
+/lga Game invite [nom] @a
+/lga Game start [nom]
+/lga export online      ← exporter les données vers le site</div></div>
+    <div id="guide-cmds" class="ip">
+      <div style="overflow-x:auto"><table><thead><tr><th>Commande</th><th>Description</th></tr></thead><tbody>
+        <tr><td><code>/hub</code></td><td>Retour au lobby</td></tr>
+        <tr><td><code>/rejoin</code></td><td>Reprendre sa partie</td></tr>
+        <tr><td><code>/lg role</code></td><td>Son rôle + alliés loups</td></tr>
+        <tr><td><code>/lg inforole</code></td><td>Description complète du rôle</td></tr>
+        <tr><td><code>/lg list</code></td><td>Joueurs en vie avec camp/aura</td></tr>
+        <tr><td><code>/lg stat [joueur]</code></td><td>Statistiques d'un joueur</td></tr>
+        <tr><td><code>/lg accuse [joueur]</code></td><td>Accuser un joueur</td></tr>
+        <tr><td><code>/lg escape</code></td><td>Se retirer du vote</td></tr>
+        <tr><td><code>/lg couple [j1] [j2]</code></td><td>Désigner le couple (Cupidon)</td></tr>
+        <tr><td><code>/lg wolfy</code></td><td>Alliés loups</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: DEV ══ -->
+<div id="page-dev" class="page">
+  <div class="pi narrow">
+    <div class="sh"><div class="si" style="background:rgba(167,139,250,.1)">💻</div><div><div class="st">Documentation Développeur</div><div class="ss">Architecture · Ajouter des rôles · Reprendre le projet</div></div></div>
+    <div class="itabs">
+      <button class="it active" onclick="showIT('dev','setup')">Environnement</button>
+      <button class="it" onclick="showIT('dev','archi')">Architecture</button>
+      <button class="it" onclick="showIT('dev','role')">Ajouter un rôle</button>
+      <button class="it" onclick="showIT('dev','export')">Export PlayerData</button>
+      <button class="it" onclick="showIT('dev','bugs')">Bugs & dette</button>
+    </div>
+    <div id="dev-setup" class="ip active">
+      <div style="overflow-x:auto"><table><thead><tr><th>JAR</th><th>Utilité</th></tr></thead><tbody>
+        <tr><td><code>spigot.jar</code></td><td>API Spigot 1.8 — obligatoire</td></tr>
+        <tr><td><code>worldedit-bukkit-6.1.jar</code></td><td>Placement de structures</td></tr>
+        <tr><td><code>ParticleAPI_v2.1.1.jar</code></td><td>Effets de particules</td></tr>
+      </tbody></table></div>
+      <div class="info-box mt16" style="border-color:rgba(251,191,36,.3)">⚠️ Ne pas ajouter <code>EffectLib</code> ni <code>MultiverseCore</code> — présents mais non utilisés. Supprimer leurs imports dans <code>Main.java</code>.</div>
+    </div>
+    <div id="dev-archi" class="ip">
+      <div style="overflow-x:auto"><table><thead><tr><th>#</th><th>Fichier</th><th>Pourquoi</th></tr></thead><tbody>
+        <tr><td>1</td><td><code>Game.java</code></td><td>Interface centrale</td></tr>
+        <tr><td>2</td><td><code>PlayerData.java</code></td><td>Classe la plus référencée</td></tr>
+        <tr><td>3</td><td><code>Main.java</code></td><td>Globals, onEnable/Disable</td></tr>
+        <tr><td>4</td><td><code>Lg/GameLg.java</code></td><td>Cœur du LG (57Ko)</td></tr>
+        <tr><td>5</td><td><code>commands/Lg.java</code></td><td>Toutes les commandes /lg</td></tr>
+        <tr><td>6</td><td><code>CharactUHC/Action.java</code></td><td>Moteur d'exécution JSON</td></tr>
+        <tr><td>7</td><td><code>commands/SpecialItemHolder.java</code></td><td>Items spéciaux et leurs effets</td></tr>
+      </tbody></table></div>
+      <div class="cb mt16"><span class="cm">// Cycle de mort simplifié</span>
+mcListeners.onPlayerDeath()
+  → game.getListener().rez()       <span class="cm">// phase 1: invincibilité temporaire</span>
+  → game.getListener().rez2()      <span class="cm">// phase 2: décision finale</span>
+       → ResCheck.checkRes()
+       → si relive=true → résurrection
+       → sinon → spectateur + removeDiedPlayer() + checkWin()</div>
+    </div>
+    <div id="dev-role" class="ip"><div class="cb"><span class="cm">// 1. Enum dans RolesLg.java</span>
+MONROLE(Camp.Villager, <span class="str">"Mon Rôle"</span>, <span class="kw">80</span>, Material.COMPASS, Aura.NEUTRAL, <span class="str">"description"</span>, <span class="kw">false</span>, <span class="kw">true</span>),
+
+<span class="cm">// 2. Classe RolesLg/MONROLE.java implementant RoleInstance</span>
+<span class="kw">public class</span> MONROLE <span class="kw">implements</span> RoleInstance {
+    <span class="kw">public</span> PlayerData playerWithRole;
+    <span class="kw">public static</span> Camp camp = Camp.Villager;
+    <span class="kw">public</span> String name = <span class="str">"Mon Rôle"</span>;
+    <span class="kw">public</span> MONROLE(PlayerData p) { this.playerWithRole = p; }
+    <span class="cm">// + implémenter toutes les méthodes de l'interface RoleInstance</span>
+}
+
+<span class="cm">// 3. Enregistrer dans Main.onEnable()</span>
+RolesLg.MONROLE,  <span class="cm">// ← ajouter à la liste</span></div></div>
+    <div id="dev-export" class="ip">
+      <div class="info-box mb16"><b>Architecture :</b> Minecraft → <code>/lga export</code> → HTTP POST → backend Node.js → site web</div>
+      <div class="cb"><span class="cm">// Dans Lga.java, ajouter dans onCommand() :</span>
+} <span class="kw">else if</span> (args[0].equals(<span class="str">"export"</span>)) {
+    <span class="kw">new</span> ExportCommand().onCommand(sender, cmd, label,
+        Arrays.copyOfRange(args, 1, args.length));
+    <span class="kw">return true</span>;
+}
+
+<span class="cm">// Dans ExportCommand.java, configurer :</span>
+<span class="kw">private static final</span> String SITE_URL  = <span class="str">"http://localhost:3000"</span>;
+<span class="kw">private static final</span> String ADMIN_KEY = <span class="str">"lgmore-admin-key-fitzche"</span>;
+
+<span class="cm">// Champs à ajouter dans PlayerData.java si absents :</span>
+<span class="kw">public int</span> pvpZoneKill  = 0;
+<span class="kw">public int</span> pvpZoneDeath = 0;
+<span class="kw">public</span> ArrayList&lt;String&gt; specialItemsOwned    = <span class="kw">new</span> ArrayList&lt;&gt;();
+<span class="kw">public</span> ArrayList&lt;String&gt; grades               = <span class="kw">new</span> ArrayList&lt;&gt;();
+<span class="kw">public</span> ArrayList&lt;String&gt; specialDeathAnnounces = <span class="kw">new</span> ArrayList&lt;&gt;();</div>
+      <div class="cb mt12"><span class="cm">// Commandes d'export :</span>
+/lga export              <span class="cm">→ tous les joueurs connus</span>
+/lga export online       <span class="cm">→ joueurs connectés uniquement</span>
+/lga export NomDuJoueur  <span class="cm">→ un joueur précis</span></div>
+    </div>
+    <div id="dev-bugs" class="ip">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="card card-sm" style="border-color:rgba(248,113,113,.3)"><div style="color:var(--red);font-weight:700;margin-bottom:6px">🐛 VoteChecker — mauvaise clé</div><div class="cb" style="margin:0"><span class="cm">// Bugué:</span> Main.strToPlayer.getOrDefault(e.getEntity(), null)
+<span class="cm">// Correct:</span> Main.strToPlayer.getOrDefault(e.getEntity().getName(), null)</div></div>
+        <div class="card card-sm" style="border-color:rgba(248,113,113,.3)"><div style="color:var(--red);font-weight:700;margin-bottom:6px">🐛 checkWin — priorité opérateurs</div><div class="cb" style="margin:0"><span class="cm">// Bugué:</span> if (allDiff && winning == Villager || winning == Wolf)
+<span class="cm">// Correct:</span> if (allDiff && (winning == Villager || winning == Wolf))</div></div>
+        <div class="card card-sm" style="border-color:rgba(248,113,113,.3)"><div style="color:var(--red);font-weight:700;margin-bottom:6px">🐛 CustomGameDataSet — copier-coller</div><div class="cb" style="margin:0">this.boostGold = boostDiams; <span class="cm">// devrait être = boostGold</span></div></div>
+        <div class="card card-sm" style="border-color:rgba(251,191,36,.3)"><div style="color:var(--gold);font-weight:700;margin-bottom:6px">🟡 boostS5/boostR5 = unités de 5%</div><div style="font-size:13px"><code>boostS5 = 2</code> → +10% dégâts. Formule : <code>more += 0.05 * boostS5</code></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: ITEMS SPÉCIAUX ══ -->
+<div id="page-items" class="page">
+  <div class="pi wide">
+    <div class="sh">
+      <div class="si" style="background:rgba(251,191,36,.1)">🎒</div>
+      <div>
+        <div class="st">Items Spéciaux</div>
+        <div class="ss">Tous les items gérés par SpecialItemHolder (hors items "Inf" de test) · Cliquez sur un item pour le détail</div>
+      </div>
+    </div>
+    <div class="info-box mb20">
+      Ces items constituent l'inventaire spécial des joueurs (<code>specialItemsOwned</code> dans PlayerData). Pour <b>ajouter un nouvel item</b> : ajoutez une entrée dans les deux tableaux <code>SPECIAL_ITEMS_DEF</code> et <code>ITEMS_CATALOG</code> dans ce fichier HTML (ils sont commentés et faciles à trouver), puis créez l'item dans <code>SpecialItemHolder.java</code>.
+    </div>
+    <div id="items-catalog-grid" class="catalog-grid"></div>
+    <div class="add-item-box mt20">
+      <div style="font-size:16px;font-weight:700;margin-bottom:12px;color:var(--text)">➕ Ajouter un nouvel item</div>
+      <div style="margin-bottom:8px">1. Dans <b>SPECIAL_ITEMS_DEF</b> (pour l'affichage en chip dans le profil) :</div>
+      <code>'MonNouvelItem': { icon:'⚗️', label:'Mon Item', color:'#34d399', bg:'rgba(52,211,153,.12)', border:'rgba(52,211,153,.35)' },</code>
+      <div style="margin:12px 0 8px">2. Dans <b>ITEMS_CATALOG</b> (pour la fiche dans cette page) :</div>
+      <code>{ key:'MonNouvelItem', icon:'⚗️', name:'Mon Item', color:'#34d399', border:'rgba(52,211,153,.35)',
+  mode:'Mode de jeu', tags:['Tag1','Tag2'],
+  desc:'Description de l\'effet de l\'item.',
+  howToGet:'Conditions d\'obtention.' },</code>
+      <div style="margin-top:12px">3. Dans <b>SpecialItemHolder.java</b>, ajoutez la gestion de l'item dans <code>onPlayerInteract()</code>.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PAGE: ACCOUNT ══ -->
+<div id="page-account" class="page">
+  <div class="pi">
+    <div id="acc-out" style="display:none">
+      <div class="auth-wrap">
+        <div class="auth-card">
+          <div class="auth-title">Espace personnel</div>
+          <div class="auth-sub">Connectez-vous pour accéder à votre profil, statistiques et amis.</div>
+          <button class="btn btn-primary w100 mb8" onclick="openM('m-login')">Se connecter</button>
+          <button class="btn btn-outline w100" onclick="openM('m-register')">Créer un compte</button>
+        </div>
+      </div>
+    </div>
+    <div id="acc-in" style="display:none">
+      <div class="itabs">
+        <button class="it active" onclick="showIT('account','profile')">👤 Profil</button>
+        <button class="it" onclick="showIT('account','friends');loadFriends()">👥 Amis</button>
+        <button class="it" onclick="showIT('account','requests');loadRequests()">🔔 Demandes <span id="req-badge" style="display:none;background:#ef4444;color:#fff;font-size:10px;font-weight:700;padding:0 5px;border-radius:4px;margin-left:4px"></span></button>
+        <button class="it" onclick="showIT('account','settings')">⚙️ Paramètres</button>
+      </div>
+
+      <!-- PROFIL -->
+      <div id="account-profile" class="ip active">
+        <div class="ph">
+          <div class="pava" id="prof-ava"></div>
+          <div style="flex:1">
+            <div style="font-size:22px;font-weight:800" id="prof-pseudo"></div>
+            <div style="font-size:13px;color:var(--text2)" id="prof-user"></div>
+            <div class="pmeta">
+              <div class="pmi"><span class="status-dot dot-on"></span><span class="pmv">En ligne</span></div>
+              <div class="pmi">Membre depuis : <span class="pmv" id="prof-since"></span></div>
+              <div class="pmi">Pseudo MC lié : <span class="pmv" id="prof-mc">—</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="prof-pd" style="display:none">
+          <!-- Statistiques LG -->
+          <div style="font-weight:700;font-size:15px;margin-bottom:10px">📊 Statistiques</div>
+          <div class="pd-grid" id="prof-stats"></div>
+
+          <!-- Zone PvP -->
+          <div class="pvp-section">
+            <div class="pvp-title">⚔️ Zone PvP</div>
+            <div class="pvp-grid" id="prof-pvp"></div>
+          </div>
+
+          <!-- Pierres d'Infinité -->
+          <div style="font-weight:700;font-size:15px;margin:20px 0 10px">♾️ Pierres d'Infinité</div>
+          <div id="prof-stones"></div>
+
+          <!-- Objets spéciaux -->
+          <div id="prof-items-wrap" style="display:none;margin-top:20px">
+            <div style="font-weight:700;font-size:15px;margin-bottom:4px">🎒 Inventaire spécial</div>
+            <div style="font-size:12px;color:var(--text2);margin-bottom:10px">Items rares obtenus en jeu · <a onclick="nav('items')" style="cursor:pointer;color:var(--accent)">Voir tous les items →</a></div>
+            <div class="si-grid" id="prof-items"></div>
+          </div>
+
+          <!-- Grades -->
+          <div id="prof-grades-wrap" style="display:none;margin-top:20px">
+            <div style="font-weight:700;font-size:15px;margin-bottom:10px">🏅 Grades</div>
+            <div id="prof-grades"></div>
+          </div>
+
+          <!-- Annonces de mort spéciales -->
+          <div id="prof-deaths-wrap" style="display:none;margin-top:20px">
+            <div style="font-weight:700;font-size:15px;margin-bottom:4px">💀 Annonces de mort personnalisées</div>
+            <div style="font-size:12px;color:var(--text2);margin-bottom:10px">Messages qui s'affichent lors de votre mort en jeu</div>
+            <div id="prof-deaths"></div>
+          </div>
+
+          <!-- Bouton debug -->
+          <div style="margin-top:20px">
+            <button class="btn btn-ghost btn-sm" onclick="toggleRawData()" style="font-size:11px;color:var(--text3)">
+              🔍 Voir les données brutes importées
+            </button>
+            <pre id="prof-raw-data" style="display:none;margin-top:8px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);padding:12px;font-size:11px;overflow-x:auto;max-height:280px;color:#98c379;line-height:1.5"></pre>
+          </div>
+
+          <!-- ════════════════════════════════════════════════════════
+               AJOUTEZ VOS NOUVEAUX CHAMPS ICI (dans le HTML)
+               Copiez un bloc existant ci-dessus et changez les ids.
+               Voir le guide complet dans le commentaire au-dessus de
+               la fonction renderProfile() dans le JS.
+               ════════════════════════════════════════════════════════ -->
+
+          <!-- Historique -->
+          <div id="prof-hist-wrap" style="display:none;margin-top:24px">
+            <div class="flex ic jb mb12">
+              <div>
+                <span style="font-weight:700;font-size:15px">📜 Historique des parties</span>
+                <span id="prof-hist-count" style="font-size:12px;color:var(--text2);margin-left:8px"></span>
+              </div>
+              <span style="font-size:12px;color:var(--text2)">▶ Cliquer pour voir le détail</span>
+            </div>
+            <div style="overflow-x:auto">
+              <table>
+                <thead><tr><th style="width:28px"></th><th>Partie</th><th>Camp gagnant</th><th>Résultat</th><th>Participants</th></tr></thead>
+                <tbody id="prof-hist"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="prof-no-pd">
+          <div class="info-box mt16">
+            <b>Aucune donnée de jeu liée.</b><br><br>
+            <b>1.</b> Allez dans <b>Paramètres → Pseudo Minecraft</b> et entrez votre pseudo exact en jeu<br>
+            <b>2.</b> Demandez à un admin : <code>/lga export VotrePseudoMC</code><br>
+            <b>3.</b> Vos statistiques apparaîtront ici automatiquement<br><br>
+            <button class="btn btn-outline btn-sm" onclick="loadDemoData()" style="margin-top:4px">
+              🧪 Tester l'affichage avec des données fictives
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AMIS -->
+      <div id="account-friends" class="ip">
+        <div class="flex ic jb mb16">
+          <div style="font-weight:700;font-size:17px">👥 Mes amis</div>
+          <button class="btn btn-primary btn-sm" onclick="openM('m-addfriend')">➕ Ajouter</button>
+        </div>
+        <div id="friends-list"><div class="empty"><div class="empty-icon">👥</div><div class="empty-text">Chargement…</div></div></div>
+      </div>
+
+      <!-- DEMANDES -->
+      <div id="account-requests" class="ip">
+        <div style="font-weight:700;font-size:17px;margin-bottom:16px">🔔 Demandes d'amis</div>
+        <div id="requests-list"><div class="empty"><div class="empty-icon">🔔</div><div class="empty-text">Chargement…</div></div></div>
+      </div>
+
+      <!-- PARAMÈTRES -->
+      <div id="account-settings" class="ip">
+        <div style="max-width:480px">
+          <div style="font-weight:700;font-size:17px;margin-bottom:20px">⚙️ Paramètres</div>
+          <div class="fg"><label class="fl">Pseudo affiché</label><input class="fi" id="s-pseudo" placeholder="Votre pseudo"></div>
+          <div class="fg">
+            <label class="fl">Pseudo Minecraft (pour lier vos données)</label>
+            <input class="fi" id="s-mcname" placeholder="Votre pseudo exact en jeu (sensible à la casse)">
+            <div style="font-size:12px;color:var(--text2);margin-top:4px">Doit correspondre exactement au nom utilisé en jeu.</div>
+          </div>
+          <div class="fg"><label class="fl">Nouveau mot de passe</label><input class="fi" type="password" id="s-pw" placeholder="Laisser vide pour ne pas changer"></div>
+          <div class="fg"><label class="fl">Confirmer</label><input class="fi" type="password" id="s-pw2"></div>
+          <div class="fe" id="s-err"></div><div class="fs" id="s-ok"></div>
+          <div class="flex gap8 mt16">
+            <button class="btn btn-primary" onclick="saveSettings()">Sauvegarder</button>
+            <button class="btn btn-danger" onclick="deleteAccount()">Supprimer le compte</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODALS ══ -->
+<div class="mo" id="m-login">
+  <div class="md">
+    <button class="md-close" onclick="closeM('m-login')">×</button>
+    <div class="md-title">Connexion</div><div class="md-sub">Accédez à votre espace LgMore</div>
+    <div class="fg"><label class="fl">Identifiant</label><input class="fi" id="li-u" placeholder="Votre identifiant"></div>
+    <div class="fg"><label class="fl">Mot de passe</label><input class="fi" type="password" id="li-p" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="fe" id="li-err"></div>
+    <button class="btn btn-primary w100 mt16" onclick="doLogin()">Se connecter</button>
+    <div class="auth-sw">Pas encore de compte ? <a onclick="closeM('m-login');openM('m-register')">Créer un compte</a></div>
+  </div>
+</div>
+<div class="mo" id="m-register">
+  <div class="md">
+    <button class="md-close" onclick="closeM('m-register')">×</button>
+    <div class="md-title">Créer un compte</div><div class="md-sub">Rejoignez la communauté LgMore</div>
+    <div class="fg"><label class="fl">Identifiant unique</label><input class="fi" id="re-u" placeholder="min 3 car., lettres/chiffres/_"><div class="fe" id="re-ue"></div></div>
+    <div class="fg"><label class="fl">Pseudo affiché</label><input class="fi" id="re-ps" placeholder="Votre pseudo Minecraft"></div>
+    <div class="fg"><label class="fl">Mot de passe</label><input class="fi" type="password" id="re-p" placeholder="min 6 caractères"><div class="fe" id="re-pe"></div></div>
+    <div class="fg"><label class="fl">Confirmer</label><input class="fi" type="password" id="re-p2"></div>
+    <div class="fe" id="re-err"></div>
+    <button class="btn btn-primary w100 mt16" onclick="doRegister()">Créer le compte</button>
+    <div class="auth-sw">Déjà un compte ? <a onclick="closeM('m-register');openM('m-login')">Se connecter</a></div>
+  </div>
+</div>
+<div class="mo" id="m-addfriend">
+  <div class="md">
+    <button class="md-close" onclick="closeM('m-addfriend')">×</button>
+    <div class="md-title">Ajouter un ami</div><div class="md-sub">Entrez l'identifiant exact du joueur</div>
+    <div class="fg"><label class="fl">Identifiant</label><input class="fi" id="af-u" placeholder="Identifiant (sensible à la casse)" onkeydown="if(event.key==='Enter')sendFriendReq()"></div>
+    <div class="fe" id="af-err"></div><div class="fs" id="af-ok"></div>
+    <button class="btn btn-primary w100 mt16" onclick="sendFriendReq()">Envoyer la demande</button>
+  </div>
+</div>
+<div class="mo" id="m-friend">
+  <div class="md"><button class="md-close" onclick="closeM('m-friend')">×</button><div id="m-friend-content"></div></div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════
+//  CONFIG — modifier l'URL si le backend n'est pas en local
+// ══════════════════════════════════════════════════════════════════════════
+const API = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+  ? 'http://localhost:3000'
+  : window.location.origin;
+
+let TOKEN = localStorage.getItem('lgmore_token') || null;
+let ME    = null;
+
+// ── API CLIENT ────────────────────────────────────────────────────────────
+async function api(method, path, body) {
+  const opts = { method, headers: { 'Content-Type': 'application/json' } };
+  if (TOKEN) opts.headers['Authorization'] = `Bearer ${TOKEN}`;
+  if (body)  opts.body = JSON.stringify(body);
+  const r    = await fetch(API + path, opts);
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.error || 'Erreur serveur');
+  return data;
+}
+
+// ── AUTH ──────────────────────────────────────────────────────────────────
+async function doLogin() {
+  const u = document.getElementById('li-u').value.trim();
+  const p = document.getElementById('li-p').value;
+  const errEl = document.getElementById('li-err');
+  errEl.classList.remove('v');
+  try {
+    const data = await api('POST', '/api/auth/login', { username: u, password: p });
+    TOKEN = data.token; ME = data.user;
+    localStorage.setItem('lgmore_token', TOKEN);
+    closeM('m-login'); await loadMe(); updateAuthUI(); nav('account');
+  } catch(e) { errEl.textContent = e.message; errEl.classList.add('v'); }
+}
+
+async function doRegister() {
+  const u  = document.getElementById('re-u').value.trim();
+  const ps = document.getElementById('re-ps').value.trim();
+  const p  = document.getElementById('re-p').value;
+  const p2 = document.getElementById('re-p2').value;
+  ['re-ue','re-pe','re-err'].forEach(id => document.getElementById(id).classList.remove('v'));
+  if (p !== p2) { document.getElementById('re-err').textContent='Les mots de passe ne correspondent pas'; document.getElementById('re-err').classList.add('v'); return; }
+  try {
+    const data = await api('POST', '/api/auth/register', { username: u, pseudo: ps || u, password: p });
+    TOKEN = data.token; ME = data.user;
+    localStorage.setItem('lgmore_token', TOKEN);
+    closeM('m-register'); await loadMe(); updateAuthUI(); nav('account');
+  } catch(e) {
+    if (e.message.includes('Identifiant')) { document.getElementById('re-ue').textContent = e.message; document.getElementById('re-ue').classList.add('v'); }
+    else if (e.message.includes('passe'))  { document.getElementById('re-pe').textContent = e.message; document.getElementById('re-pe').classList.add('v'); }
+    else { document.getElementById('re-err').textContent = e.message; document.getElementById('re-err').classList.add('v'); }
+  }
+}
+
+function logout() {
+  TOKEN = null; ME = null;
+  localStorage.removeItem('lgmore_token');
+  updateAuthUI(); nav('home');
+}
+
+async function loadMe() {
+  if (!TOKEN) return;
+  try {
+    // On attend la réponse complète AVANT de mettre à jour l'UI
+    const fresh = await api('GET', '/api/me');
+    ME = fresh;
+    // updateAuthUI met à jour les éléments de nav, puis appelle renderProfile
+    updateAuthUI();
+  } catch(e) {
+    if (e.message.includes('authentifi') || e.message.includes('expiré')) {
+      TOKEN = null; ME = null; localStorage.removeItem('lgmore_token'); updateAuthUI();
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  DONNÉES — Items spéciaux
+//
+//  SPECIAL_ITEMS_DEF : clé = nom EXACT dans specialItemsOwned côté Java
+//  Chaque entrée : { icon, label, color, bg, border }
+//
+//  Pour ajouter un item :
+//    1. Ajoutez une entrée dans SPECIAL_ITEMS_DEF
+//    2. Ajoutez une entrée dans ITEMS_CATALOG
+//    3. Ajoutez l'item dans SpecialItemHolder.java
+// ══════════════════════════════════════════════════════════════════════════
+const SPECIAL_ITEMS_DEF = {
+  // ── Navigation & utilitaires ──────────────────────────────────────────
+  'Navigation':   { icon:'📖', label:'Navigation',    color:'#60a5fa', bg:'rgba(96,165,250,.12)',  border:'rgba(96,165,250,.35)'  },
+  'Dash':         { icon:'💨', label:'Dash',          color:'#34d399', bg:'rgba(52,211,153,.12)',  border:'rgba(52,211,153,.35)'  },
+  'Infinite Blue':{ icon:'🔵', label:'Infinite Blue', color:'#818cf8', bg:'rgba(129,140,248,.12)', border:'rgba(129,140,248,.35)' },
+  // ── Items StarWars ────────────────────────────────────────────────────
+  'Ataru':        { icon:'🌀', label:'Ataru',         color:'#60a5fa', bg:'rgba(96,165,250,.12)',  border:'rgba(96,165,250,.35)'  },
+  'Kashimo':    { icon:'⚡', label:'Kashimo',     color:'#fbbf24', bg:'rgba(251,191,36,.12)',  border:'rgba(251,191,36,.35)'  },
+  'Strangle':     { icon:'⚔️', label:'Strangle',      color:'#f87171', bg:'rgba(248,113,113,.12)', border:'rgba(130,0,181,.35)' },
+   'Strangle':     { icon:'⚔️', label:'Toji',      color:'#f87171', bg:'rgba(248,113,113,.12)', border:'rgba(130,0,181,.35)' },
+  
+  'Sith':         { icon:'🔴', label:'Sith',          color:'#f87171', bg:'rgba(248,113,113,.12)', border:'rgba(248,113,113,.35)' },
+  // ── Ajoutez vos items ici ─────────────────────────────────────────────
+  'Yuta':     { icon:'⚔️', label:'Yuta',      color:'#8200B5', bg:'rgba(248,113,113,.12)', border:'rgba(248,113,113,.35)' },
+  'Hakari':     { icon:'🍀', label:'Hakari',      color:'#8200B5', bg:'rgba(248,113,113,.12)', border:'rgba(248,113,113,.35)' },
+  'Echelle de Jacob':     { icon:'🌈', label:'Echelle de Jacob',      color:'#fbbf24', bg:'rgba(251,191,36,.12)', border:'rgba(251,191,36,.35)' },
+  'Hanami':     { icon:'🌱', label:'Hanami',      color:'#0B8001', bg:'rgba(251,191,36,.12)', border:'rgba(11,128,1,.35)' },
+  'Zenitsu':    { icon:'⚡', label:'Zenitsu',     color:'#fbbf24', bg:'rgba(251,191,36,.12)',  border:'rgba(251,191,36,.35)'  },
+  'Jogo':    { icon:'🔥', label:'Jogo',     color:'#fbbf24', bg:'rgba(251,191,36,.12)',  border:'rgba(251,191,36,.35)'  },
+  'Naoya':    { icon:'🏃‍♀', label:'Naoya',     color:'#fbbf24', bg:'rgba(251,191,36,.12)',  border:'rgba(251,191,36,.35)'  },
+   'Naobito':{ icon:'🏃‍♀️', label:'Naobito', color:'#818cf8', bg:'rgba(129,140,248,.12)', border:'rgba(129,140,248,.35)' },
+  
+  // 'MonItem': { icon:'⚗️', label:'Mon Item', color:'#34d399', bg:'rgba(52,211,153,.12)', border:'rgba(52,211,153,.35)' },
+};
+
+// ── Fallback pour tout item non référencé ─────────────────────────────────
+function itemFallback(key) {
+  return { icon:'📦', label: key, color:'#94a3b8', bg:'rgba(148,163,184,.08)', border:'rgba(148,163,184,.25)' };
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  ITEMS_CATALOG — Fiches complètes pour la page "Items spéciaux"
+//  Chaque entrée : { key, icon, name, color, border, mode, tags[], desc, howToGet }
+// ══════════════════════════════════════════════════════════════════════════
+const ITEMS_CATALOG = [
+  {
+    key: 'Navigation', icon: '📖', name: 'Navigation',
+    color: '#60a5fa', border: 'rgba(96,165,250,.35)',
+    mode: 'Tous modes', tags: ['Utilitaire', 'Permanent'],
+    desc: 'Livre magique attribué à chaque joueur à la connexion. Un clic droit ouvre le menu principal permettant d\'accéder à tous les modes de jeu, de consulter son profil et de rejoindre des parties.',
+    howToGet: 'Attribué automatiquement à la connexion au serveur.',
+  },
+  {
+    key: 'Dash', icon: '💨', name: 'Dash',
+    color: '#34d399', border: 'rgba(52,211,153,.35)',
+    mode: 'Zone PvP / LG', tags: ['Combat', 'Consommable', 'Mobilité', 'classe 3'],
+    desc: 'Propulsion directionnelle : un clic droit propulse violemment le joueur dans la direction de son regard avec des particules rouges. Octroie une brève résistance pendant le dash. L\'item est consommé à l\'usage.',
+    howToGet: 'Obtenu en zone PvP ou lors de certains événements en partie.',
+  },
+  {
+    key: 'Infinite Blue', icon: '🔵', name: 'Infinite Blue',
+    color: '#818cf8', border: 'rgba(129,140,248,.35)',
+    mode: 'Tous modes', tags: ['Pouvoir', 'Zone d\'effet', 'Gojo Satoru','classe S'],
+    desc: 'Pouvoir inspiré de l\'Infinity Blue de Gojo Satoru. Crée un point d\'attraction gravitationnelle qui attire et blesse les joueurs dans un rayon de 3 blocs toutes les demi-secondes pendant ~7 secondes.',
+    howToGet: 'Item rare obtenu dans les bâtiments bonus ou lors d\'événements spéciaux.',
+  },
+  {
+    key: 'Ataru', icon: '🌀', name: 'Ataru',
+    color: '#60a5fa', border: 'rgba(96,165,250,.35)',
+    mode: 'StarParty', tags: ['Star Wars', 'Jedi', 'Obi-Wan', 'Défensif', 'classe 3'],
+    desc: 'Forme de combat Ataru d\'Obi-Wan Kenobi. En parade (clic droit avec le sabre), tous les joueurs dans un rayon de 3 blocs sont éjectés avec un fort knockback.',
+    howToGet: 'Attribué exclusivement à Obi-Wan Kenobi dans les parties StarParty.',
+  },
+  {
+    key: 'Kashimo', icon: '⚡', name: 'Kashimo',
+    color: '#fbbf24', border: 'rgba(251,191,36,.35)',
+    mode: 'StarParty', tags: ['Star Wars', 'Sith', 'Palpatine', 'Offensif', 'classe 1'],
+    desc: ' Eclair de Kashimo. Un clic droit tire un éclair sur le premier joueur dans la ligne de mire (40 blocs), infligeant 2 cœurs de dégâts et Slowness. 2 utilisations.',
+    howToGet: 'Attribué à Dark Sidious (Palpatine) dans les parties StarParty. Attribué de manière ponctuelle dans la zone pvp',
+  },
+  {
+    key: 'Yuta', icon: '⚔️', name: 'Yuta',
+    color: '#8200B5', border: 'rgba(130,0,181,.35)',
+    mode: 'PvP Zone', tags: ['classe S'],
+    desc: ' Permet de copier deux items aléatoire de l\'inventaire spécial du joueur visé ',
+	howToGet: 'obtenu de manière ponctuelle dans la zone pvp',
+  },
+  {
+    key: 'Echelle de Jacob', icon: '🌈', name: 'Echelle de Jacob',
+    color: '#fbbf24', border: 'rgba(251,191,36,.35)',
+    mode: 'PvP Zone', tags: ['classe 1'],
+    desc: ' Permet de supprimer un item aléatoire de l\'inventaire spécial du joueur visé ',
+	howToGet: 'obtenu de manière ponctuelle dans la zone pvp',
+  },
+  {
+    key: 'Hakari', icon: '🍀', name: 'Hakari',
+    color: '#8200B5', border: 'rgba(130,0,181,.35)',
+    mode: 'PvP Zone', tags: ['classe 1'],
+    desc: ' Permet de lancer un jackot, ayant 1 chances sur 100 de rendre invincible pendant 1 minutes ',
+	howToGet: 'obtenu de manière ponctuelle dans la zone pvp',
+  },
+  {
+    key: 'Hanami', icon: '🌱', name: 'Hanami',
+    color: '#0B8001', border: 'rgba(11,128,1,.35)',
+    mode: 'PvP Zone', tags: ['classe 1'],
+    desc: ' Fait apparaitre une foret dense',
+	howToGet: 'obtenu de manière ponctuelle dans la zone pvp',
+  },
+  {
+    key: 'Strangle', icon: '🌑', name: 'Strangle',
+    color: '#f87171', border: 'rgba(248,113,113,.35)',
+    mode: 'StarParty', tags: ['Star Wars', 'Sith', 'Dark Vador', 'Contrôle', 'classe 2+'],
+    desc: 'Étranglement de Dark Vador. Cible le premier joueur dans la ligne de mire (40 blocs) et lui applique simultanément Blindness, Slowness III et Poison pendant 3 secondes. Dark Vador subit Slowness II durant l\'action. 2 utilisations.',
+    howToGet: 'Attribué à Dark Vador dans les parties StarParty.',
+  },
+  {
+    key: 'Toji', icon: '⚔️', name: 'Toji',
+    color: '#f87171', border: 'rgba(248,113,113,.35)',
+    mode: 'PvP Zone', tags: ['classe S'],
+    desc: ' Effets surpuissant contre 3c permanents et la possibilité d\'utiliser des items spéciaux',
+    howToGet: 'obtenu de manière ponctuelle dans la zone pvp',
+  },
+  {
+    key: 'Sith', icon: '🔴', name: 'Sith',
+    color: '#f87171', border: 'rgba(248,113,113,.35)',
+    mode: 'StarParty', tags: ['Star Wars', 'Sith', 'Buff', 'Vitesse', 'classe 2+'],
+    desc: 'Pouvoir des Sith. Accorde Speed III et Force I pendant 10 secondes. Disponible pour Dark Maul, Dark Sidious (Palpatine) et Dark Vador.',
+    howToGet: 'Attribué aux rôles Sith (Dark Maul, Dark Sidious, Dark Vador) dans les parties StarParty.',
+  },
+  {
+    key: 'Zenitsu', icon: '⚡', name: 'Zenistu',
+    color: '#fbbf24', border: 'rgba(251,191,36,.35)',
+    mode: 'PvP Zone', tags: [ 'Vitesse', 'classe 1'],
+    desc: 'foudroie la cible et dash vers celle-ci',
+    howToGet: 'Attribué de manière ponctuelle dans la zone pvp',
+  },
+   {
+    key: 'Jogo', icon: '🔥', name: 'Jogo',
+    color: '#fbbf24', border: 'rgba(251,191,36,.35)',
+    mode: 'PvP Zone', tags: [ 'Feu', 'classe S'],
+    desc: 'fais exploser la cible après quelques secondes',
+    howToGet: 'Attribué de manière ponctuelle dans la zone pvp',
+  },
+  {
+    key: 'Naobito', icon: '🏃‍♀️', name: 'Naobito',
+    color: '#60a5fa', border: 'rgba(96,165,250,.35)',
+    mode: 'PvP Zone', tags: [ 'Feu', 'classe 2'],
+    desc: 'permet de voler 5s (je peux toujours sauter plus haut!)',
+    howToGet: 'Attribué de manière ponctuelle dans la zone pvp',
+  },
+  {
+    key: 'Naoya', icon: '🏃‍♀', name: 'Naoya',
+    color: '#fbbf24', border: 'rgba(251,191,36,.35)',
+    mode: 'PvP Zone', tags: [ 'Vitesse', 'classe 1'],
+    desc: 'permet d\'obtenir speed 4 et invisibility pendant 15s',
+    howToGet: 'Attribué de manière ponctuelle dans la zone pvp',
+  },
+  // ── Ajoutez vos nouveaux items ici ────────────────────────────────────
+  // {
+  //   key: 'MonNouvelItem', icon: '⚗️', name: 'Mon Nouvel Item',
+  //   color: '#34d399', border: 'rgba(52,211,153,.35)',
+  //   mode: 'Mode de jeu', tags: ['Tag1', 'Tag2'],
+  //   desc: 'Description complète de l\'effet de l\'item.',
+  //   howToGet: 'Conditions d\'obtention en jeu.',
+  // },
+];
+
+// ══════════════════════════════════════════════════════════════════════════
+//  PIERRES D'INFINITÉ
+// ══════════════════════════════════════════════════════════════════════════
+const STONES = [
+  { k:'hasSpaceUsed',   n:'Espace',   c:'#60a5fa', i:'🌌' },
+  { k:'hasSoulUsed',    n:'Âme',      c:'#fbbf24', i:'✨' },
+  { k:'hasPowerUsed',   n:'Pouvoir',  c:'#a78bfa', i:'💜' },
+  { k:'hasTimeUsed',    n:'Temps',    c:'#34d399', i:'⏳' },
+  { k:'hasRealityUsed', n:'Réalité',  c:'#f87171', i:'🔴' },
+  { k:'hasMindUsed',    n:'Esprit',   c:'#fcd34d', i:'🧠' },
+];
+
+// ══════════════════════════════════════════════════════════════════════════
+//  UTILITAIRES RENDU — PlayerData
+// ══════════════════════════════════════════════════════════════════════════
+function stonesHTML(pd) {
+  return STONES.map(s =>
+    `<span class="stone ${pd[s.k] ? 'used' : 'unused'}" style="border-color:${s.c}40;color:${s.c};background:${s.c}15">${s.i} ${s.n}</span>`
+  ).join('');
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Les trois fonctions suivantes affichent TOUJOURS quelque chose :
+//  - Si le champ est absent du JSON → message "non exporté" (dashed border)
+//  - Si le champ est un tableau vide → message "aucun"
+//  - Si le champ a des valeurs → affichage en chips/cards
+// ─────────────────────────────────────────────────────────────────────────
+
+function specialItemsHTML(pd) {
+  // Robustesse : accepte null, undefined, [], ou un vrai tableau
+  const raw = pd.specialItemsOwned;
+  if (raw === undefined || raw === null) {
+    return `<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg3);border-radius:var(--rsm);border:1px dashed var(--border)">
+      <span style="font-size:18px">📭</span>
+      <span style="font-size:12px;color:var(--text3)">
+        Champ absent du JSON importé — re-exportez avec
+        <code style="color:#e5c07b;background:var(--bg4);padding:1px 5px;border-radius:3px">/lga export</code>
+        après avoir ajouté <code style="color:#e5c07b;background:var(--bg4);padding:1px 5px;border-radius:3px">specialItemsOwned</code> à PlayerData.java
+      </span>
+    </div>`;
+  }
+  const items = Array.isArray(raw) ? raw : [];
+  if (!items.length) {
+    return `<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg3);border-radius:var(--rsm);border:1px solid var(--border)">
+      <span style="font-size:16px">🎒</span>
+      <span style="font-size:12px;color:var(--text2)">Inventaire vide — aucun item spécial obtenu pour l'instant</span>
+    </div>`;
+  }
+  return `<div class="si-grid">${items.map(key => {
+    const def = SPECIAL_ITEMS_DEF[key] || itemFallback(key);
+    return `<div class="si-chip" style="color:${def.color};background:${def.bg};border-color:${def.border}" title="${key}">
+      <span style="font-size:18px;line-height:1">${def.icon}</span>
+      <span>${def.label}</span>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+function gradesHTML(pd) {
+  const raw = pd.grades;
+  if (raw === undefined || raw === null) {
+    return `<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg3);border-radius:var(--rsm);border:1px dashed var(--border)">
+      <span style="font-size:18px">📭</span>
+      <span style="font-size:12px;color:var(--text3)">
+        Champ absent du JSON importé — re-exportez après avoir ajouté
+        <code style="color:#e5c07b;background:var(--bg4);padding:1px 5px;border-radius:3px">grades</code> à PlayerData.java
+      </span>
+    </div>`;
+  }
+  const list = Array.isArray(raw) ? raw : [];
+  if (!list.length) {
+    return `<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg3);border-radius:var(--rsm);border:1px solid var(--border)">
+      <span style="font-size:16px">🏅</span>
+      <span style="font-size:12px;color:var(--text2)">Aucun grade — les grades attribués apparaîtront ici</span>
+    </div>`;
+  }
+  return list.map(g => `<span class="grade-chip">🏅 ${g}</span>`).join('');
+}
+
+function deathAnnouncesHTML(pd) {
+  const raw = pd.specialDeathAnnounces;
+  if (raw === undefined || raw === null) {
+    return `<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg3);border-radius:var(--rsm);border:1px dashed var(--border)">
+      <span style="font-size:18px">📭</span>
+      <span style="font-size:12px;color:var(--text3)">
+        Champ absent du JSON importé — re-exportez après avoir ajouté
+        <code style="color:#e5c07b;background:var(--bg4);padding:1px 5px;border-radius:3px">specialDeathAnnounces</code> à PlayerData.java
+      </span>
+    </div>`;
+  }
+  const list = Array.isArray(raw) ? raw : [];
+  if (!list.length) {
+    return `<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg3);border-radius:var(--rsm);border:1px solid var(--border)">
+      <span style="font-size:16px">💀</span>
+      <span style="font-size:12px;color:var(--text2)">Aucune annonce personnalisée</span>
+    </div>`;
+  }
+  return list.map(d => `<div class="death-chip">💬 "${d}"</div>`).join('');
+}
+
+function winStats(pd) {
+  const name = (pd.Name || pd.name || '').toLowerCase();
+  let wins = 0, total = 0;
+  for (const n of (pd.notes || [])) {
+    total++;
+    if ((n.winners || []).some(w => w.toLowerCase() === name)) wins++;
+  }
+  return { wins, total, wr: total ? Math.round(wins / total * 100) : 0 };
+}
+
+// ── Détection du type de game depuis le nom de la GameNote ───────────────
+function parseGameType(noteName) {
+  if (!noteName) return null;
+  const TYPES = [
+    { key:'Theatre',     label:'Théâtre',      icon:'🎭', color:'#f87171', bg:'rgba(248,113,113,.15)' },
+    { key:'Théâtre',     label:'Théâtre',      icon:'🎭', color:'#f87171', bg:'rgba(248,113,113,.15)' },
+    { key:'DirectFight', label:'DirectFights', icon:'⚔️', color:'#fbbf24', bg:'rgba(251,191,36,.15)'  },
+    { key:'Necromancie', label:'Necromancie',  icon:'💀', color:'#a78bfa', bg:'rgba(167,139,250,.15)' },
+    { key:'StarParty',   label:'StarParty',    icon:'⭐', color:'#fbbf24', bg:'rgba(251,191,36,.15)'  },
+    { key:'Swapper',     label:'TeamSwapper',  icon:'🔄', color:'#38bdf8', bg:'rgba(56,189,248,.15)'  },
+    { key:'Bedwars',     label:'Bedwars',      icon:'🛏️', color:'#4ade80', bg:'rgba(74,222,128,.15)'  },
+    { key:'CharactUHC',  label:'CharactUHC',   icon:'📜', color:'#60a5fa', bg:'rgba(96,165,250,.15)'  },
+    { key:'ClockTower',  label:'ClockTower',   icon:'🏰', color:'#c084fc', bg:'rgba(192,132,252,.15)' },
+    // Ajoutez vos types de game ici
+  ];
+  for (const t of TYPES) {
+    if (noteName.toLowerCase().includes(t.key.toLowerCase())) return t;
+  }
+  return null;
+}
+
+// ── Rendu de l'historique des GameNote ───────────────────────────────────
+function renderNotes(notes, playerName, containerId) {
+  const myName = (playerName || '').toLowerCase();
+  if (!notes || !notes.length) return;
+
+  // winningCamp peut arriver comme {name:"Villageois"} ou "Villageois" ou null
+  function campName(wc) {
+    if (!wc) return '—';
+    if (typeof wc === 'string') return wc;
+    if (typeof wc === 'object' && wc.name) return wc.name;
+    return '—';
+  }
+
+  document.getElementById(containerId).innerHTML = notes.map((n, i) => {
+    const winCamp = campName(n.winningCamp);
+    const winners = Array.isArray(n.winners) ? n.winners : [];
+    const won     = winners.some(w => (w||'').toLowerCase() === myName);
+    const players = Array.isArray(n.plysNote) ? n.plysNote : [];
+    const nb      = players.length;
+    const gtype   = parseGameType(n.name);
+    const typeBadge = gtype
+      ? `<span class="game-type-badge" style="color:${gtype.color};background:${gtype.bg}">${gtype.icon} ${gtype.label}</span>`
+      : '';
+
+    // Retrouver le rôle du joueur connecté dans cette partie
+    const myNote = players.find(p => (p.name||'').toLowerCase() === myName);
+    const myRole = myNote && myNote.role ? `<span style="font-size:11px;color:var(--text2);font-style:italic"> · ${myNote.role}</span>` : '';
+
+    // Trier : vainqueurs d'abord, puis kills décroissants
+    const sorted = [...players].sort((a, b) => {
+      const aw = winners.some(w => (w||'').toLowerCase() === (a.name||'').toLowerCase());
+      const bw = winners.some(w => (w||'').toLowerCase() === (b.name||'').toLowerCase());
+      if (aw && !bw) return -1; if (!aw && bw) return 1;
+      return (b.kill || 0) - (a.kill || 0);
+    });
+
+    return `
+      <tr class="note-row" onclick="toggleNote(${i}, '${containerId}')">
+        <td style="text-align:center;font-size:13px;color:var(--text3)" id="note-arr-${containerId}-${i}">▶</td>
+        <td><span style="font-weight:600">${n.name || '—'}</span>${typeBadge}${myRole}</td>
+        <td style="color:${winCamp === '—' ? 'var(--text3)' : 'var(--text2)'}">${winCamp}</td>
+        <td><span class="win-badge ${won ? 'wb-win' : 'wb-loss'}">${won ? '✓ Victoire' : '✗ Défaite'}</span></td>
+        <td style="color:var(--text2);font-size:12px">${nb > 0 ? nb + ' joueur' + (nb > 1 ? 's' : '') : '—'}</td>
+      </tr>
+      <tr id="note-pan-${containerId}-${i}" style="display:none">
+        <td colspan="5" style="padding:0 0 10px 0;border-bottom:1px solid var(--border)">
+          <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--rsm);padding:14px;animation:fadeIn .18s ease">
+            ${sorted.length ? `
+              <div class="flex ic jb mb8">
+                <span style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.4px">
+                  ${nb} participant${nb > 1 ? 's' : ''}
+                </span>
+                <span style="font-size:11px;color:var(--text2)">
+                  🏆 ${winners.length} vainqueur${winners.length > 1 ? 's' : ''}
+                  · camp : <b style="color:var(--text)">${winCamp}</b>
+                  · ${sorted.reduce((s, p) => s + (p.kill || 0), 0)} kills
+                </span>
+              </div>
+              <div class="note-players">
+                ${sorted.map(p => {
+                  const isW = winners.some(w => (w||'').toLowerCase() === (p.name||'').toLowerCase());
+                  const roleLabel = p.role || null;
+                  const killLabel = (p.kill != null && p.kill > 0) ? `${p.kill} kill${p.kill > 1 ? 's' : ''}` : null;
+                  return `<div class="np ${isW ? 'np-win' : ''}">
+                    ${isW ? '<span style="color:var(--green)">🏆</span>' : ''}
+                    <span class="np-name" style="color:${isW ? 'var(--green)' : 'var(--text)'}">${p.name || '?'}</span>
+                    ${roleLabel ? `<span class="np-role">${roleLabel}</span>` : ''}
+                    ${killLabel ? `<span class="np-kills">${killLabel}</span>` : ''}
+                    ${p.infected ? '<span style="color:#f59e0b;font-size:10px" title="Infecté">🦠</span>' : ''}
+                    ${p.inLove   ? '<span style="color:#e879f9;font-size:10px" title="Amoureux">💕</span>' : ''}
+                  </div>`;
+                }).join('')}
+              </div>
+            ` : `<div style="padding:8px 0">
+              <span style="color:var(--text3);font-size:12px">
+                Détail des joueurs non disponible — utilisez la nouvelle version de
+                <code style="color:#e5c07b;background:var(--bg4);padding:1px 5px;border-radius:3px">ExportCommand.java</code>
+                et re-exportez vos données.
+              </span>
+            </div>`}
+          </div>
+        </td>
+      </tr>`;
+  }).join('');
+}
+function toggleNote(i, cid) {
+  const row   = document.getElementById(`note-pan-${cid}-${i}`);
+  const arrow = document.getElementById(`note-arr-${cid}-${i}`);
+  const open  = row.style.display !== 'none';
+  row.style.display  = open ? 'none' : '';
+  arrow.textContent  = open ? '▶' : '▼';
+  arrow.style.color  = open ? 'var(--text3)' : 'var(--accent)';
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  RENDU DU PROFIL
+// ══════════════════════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════════════════════
+//  COMMENT AJOUTER UN NOUVEAU CHAMP AU PROFIL
+// ══════════════════════════════════════════════════════════════════════════
+//
+//  ÉTAPE 1 — Java : déclarez le champ dans PlayerData.java
+//    public int    monNouveauChamp = 0;                     // pour un entier
+//    public String monTexte        = "";                    // pour un texte
+//    public ArrayList<String> maListe = new ArrayList<>();  // pour une liste
+//
+//  ÉTAPE 2 — Java : exportez-le dans ExportCommand.java (méthode buildPayload)
+//    map.put("monNouveauChamp", p.monNouveauChamp);
+//    // Pour une liste :
+//    map.put("maListe", p.maListe != null ? new ArrayList<>(p.maListe) : new ArrayList<>());
+//
+//  ÉTAPE 3 — HTML : ajoutez un conteneur dans la section <div id="prof-pd">
+//    Cherchez "<!-- Ajoutez vos nouveaux champs ici -->" dans ce fichier.
+//    Copiez-collez un bloc existant (ex: prof-grades-wrap) et changez les ids.
+//    Exemple pour un entier simple :
+//      <div id="prof-monchamp-wrap" style="margin-top:20px">
+//        <div style="font-weight:700;font-size:15px;margin-bottom:10px">🔢 Mon Champ</div>
+//        <div id="prof-monchamp"></div>
+//      </div>
+//
+//  ÉTAPE 4 — JS : lisez le champ dans renderProfile() et injectez le HTML
+//    Cherchez "── Ajoutez ici vos nouveaux champs ──" dans renderProfile().
+//    Exemple pour un entier :
+//      document.getElementById('prof-monchamp-wrap').style.display = '';
+//      document.getElementById('prof-monchamp').innerHTML =
+//        `<span class="pd-val">${pd.monNouveauChamp || 0}</span>`;
+//    Exemple pour une liste de strings :
+//      const arr = pd.maListe || [];
+//      document.getElementById('prof-monchamp-wrap').style.display = '';
+//      document.getElementById('prof-monchamp').innerHTML = arr.length
+//        ? arr.map(x => `<span class="grade-chip">${x}</span>`).join('')
+//        : '<span style="color:var(--text3);font-style:italic">Aucune valeur</span>';
+//
+//  C'est tout. Pas besoin de toucher au backend (server.js).
+// ══════════════════════════════════════════════════════════════════════════
+
+function renderProfile() {
+  if (!ME) return;
+  document.getElementById('prof-ava').textContent     = ME.pseudo.charAt(0).toUpperCase();
+  document.getElementById('prof-pseudo').textContent  = ME.pseudo;
+  document.getElementById('prof-user').textContent    = '@' + ME.id;
+  document.getElementById('prof-since').textContent   = new Date(ME.createdAt).toLocaleDateString('fr-FR');
+  document.getElementById('prof-mc').textContent      = ME.mcName || '—';
+  document.getElementById('s-pseudo').value  = ME.pseudo;
+  document.getElementById('s-mcname').value  = ME.mcName || '';
+
+  const pd = ME.playerData;
+  if (pd) {
+    document.getElementById('prof-pd').style.display     = '';
+    document.getElementById('prof-no-pd').style.display  = 'none';
+
+    // ── Stats LG ──────────────────────────────────────────────────────────
+    const ws = winStats(pd);
+    document.getElementById('prof-stats').innerHTML = `
+      <div class="pd-stat"><div class="pd-val">${pd.xp || 0}</div><div class="pd-lbl">XP</div></div>
+      <div class="pd-stat"><div class="pd-val">${pd.feathers || 0}</div><div class="pd-lbl">Feathers</div></div>
+      <div class="pd-stat"><div class="pd-val">${ws.total}</div><div class="pd-lbl">Parties LG</div></div>
+      <div class="pd-stat"><div class="pd-val">${ws.wins}</div><div class="pd-lbl">Victoires</div></div>
+      <div class="pd-stat"><div class="pd-val">${ws.wr}%</div><div class="pd-lbl">Win rate</div></div>
+    `;
+
+    // ── Stats PvP Zone ────────────────────────────────────────────────────
+    // pvpZoneKill et pvpZoneDeath sont à 0 si absents du PlayerData.java.
+    // Dans ce cas : ajouter "public int pvpZoneKill = 0;" dans PlayerData.java
+    const pvpK = (pd.pvpZoneKill  != null) ? Number(pd.pvpZoneKill)  : null;
+    const pvpD = (pd.pvpZoneDeath != null) ? Number(pd.pvpZoneDeath) : null;
+    if (pvpK === null && pvpD === null) {
+      // Champs absents du JSON importé
+      document.getElementById('prof-pvp').innerHTML =
+        `<div style="grid-column:1/-1;display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg3);border-radius:var(--rsm);border:1px dashed var(--border)">
+          <span style="font-size:16px">📭</span>
+          <span style="font-size:12px;color:var(--text3)">
+            Champs absents — ajoutez
+            <code style="color:#e5c07b;background:var(--bg4);padding:1px 5px;border-radius:3px">public int pvpZoneKill = 0;</code>
+            et
+            <code style="color:#e5c07b;background:var(--bg4);padding:1px 5px;border-radius:3px">public int pvpZoneDeath = 0;</code>
+            à PlayerData.java, puis re-exportez.
+          </span>
+        </div>`;
+    } else {
+      const k = pvpK || 0;
+      const d = pvpD || 0;
+      const r = d > 0 ? (k / d).toFixed(2) : (k > 0 ? '∞' : '—');
+      document.getElementById('prof-pvp').innerHTML = `
+        <div class="pvp-stat"><div class="pvp-val">${k}</div><div class="pvp-lbl">Kills PvP</div></div>
+        <div class="pvp-stat"><div class="pvp-val">${d}</div><div class="pvp-lbl">Morts PvP</div></div>
+        <div class="pvp-stat"><div class="pvp-val">${r}</div><div class="pvp-lbl">K/D Ratio</div></div>
+      `;
+    }
+
+    // ── Pierres ──────────────────────────────────────────────────────────
+    document.getElementById('prof-stones').innerHTML = stonesHTML(pd);
+
+    // ── Inventaire spécial ────────────────────────────────────────────────
+    // Toujours visible : montre un message vide si specialItemsOwned est absent/vide
+    document.getElementById('prof-items-wrap').style.display = '';
+    document.getElementById('prof-items').innerHTML = specialItemsHTML(pd);
+
+    // ── Grades ───────────────────────────────────────────────────────────
+    // Toujours visible : montre un message vide si grades est absent/vide
+    document.getElementById('prof-grades-wrap').style.display = '';
+    document.getElementById('prof-grades').innerHTML = gradesHTML(pd);
+
+    // ── Annonces de mort ─────────────────────────────────────────────────
+    // Toujours visible : montre un message vide si specialDeathAnnounces est absent/vide
+    document.getElementById('prof-deaths-wrap').style.display = '';
+    document.getElementById('prof-deaths').innerHTML = deathAnnouncesHTML(pd);
+
+    // ── Ajoutez ici vos nouveaux champs ─────────────────────────────────
+    // (voir le guide au-dessus de renderProfile pour les instructions)
+
+    // ── Historique ────────────────────────────────────────────────────────
+    const notes = pd.notes || [];
+    if (notes.length) {
+      document.getElementById('prof-hist-wrap').style.display = '';
+      document.getElementById('prof-hist-count').textContent  = `(${notes.length} partie${notes.length > 1 ? 's' : ''})`;
+      renderNotes(notes, pd.Name || pd.name || '', 'prof-hist');
+    } else {
+      document.getElementById('prof-hist-wrap').style.display = 'none';
+    }
+
+  } else {
+    document.getElementById('prof-pd').style.display    = 'none';
+    document.getElementById('prof-no-pd').style.display = '';
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  SETTINGS
+// ══════════════════════════════════════════════════════════════════════════
+// ── Données de démonstration avec TOUS les champs ────────────────────────
+// Ce jeu de données permet de tester l'affichage sans serveur Minecraft.
+// Il reproduit exactement ce qu'ExportCommand.java enverrait si les champs
+// pvpZoneKill, pvpZoneDeath, specialItemsOwned, grades, specialDeathAnnounces
+// étaient remplis en jeu.
+function loadDemoData() {
+  const demo = {
+    Name: 'DemoPlayer',
+    xp: 3420,
+    feathers: 58,
+    pvpZoneKill:  27,
+    pvpZoneDeath: 14,
+    hasSpaceUsed:   true,
+    hasSoulUsed:    false,
+    hasPowerUsed:   true,
+    hasTimeUsed:    false,
+    hasRealityUsed: false,
+    hasMindUsed:    true,
+    // Items spéciaux (noms exacts de SpecialItemHolder)
+    specialItemsOwned: ['Navigation', 'Dash', 'Infinite Blue', 'Ataru'],
+    // Grades attribués par les admins
+    grades: ['Fondateur', 'Vétéran de la saison 1', 'Champion LG'],
+    // Annonces de mort personnalisées
+    specialDeathAnnounces: [
+      'DemoPlayer a trouvé la paix éternelle.',
+      'DemoPlayer n\'aurait pas dû chercher les loups seul la nuit...',
+    ],
+    notes: [
+      {
+        name: 'Partie 42 -Théâtre-',
+        winningCamp: { name: 'Loups-Garou' },
+        winners: ['LoupAlpha', 'LoupBeta'],
+        plysNote: [
+          { name: 'DemoPlayer',  role: 'Voyante',         kill: 0, inLove: false, infected: false, hasWin: false },
+          { name: 'LoupAlpha',   role: 'Simple Loup-Garou', kill: 3, inLove: false, infected: false, hasWin: true  },
+          { name: 'LoupBeta',    role: 'Loup Mystique',   kill: 2, inLove: false, infected: false, hasWin: true  },
+          { name: 'Alice',       role: 'Chasseur',        kill: 1, inLove: true,  infected: false, hasWin: false },
+          { name: 'Bob',         role: 'Simple Villageois', kill: 0, inLove: false, infected: true, hasWin: false },
+        ]
+      },
+      {
+        name: 'Partie 43 -StarParty-',
+        winningCamp: { name: 'Jedi' },
+        winners: ['DemoPlayer', 'Alice'],
+        plysNote: [
+          { name: 'DemoPlayer',  role: 'MaitreYoda',   kill: 2, inLove: false, infected: false, hasWin: true  },
+          { name: 'Alice',       role: 'LucSkywalker', kill: 1, inLove: false, infected: false, hasWin: true  },
+          { name: 'Bob',         role: 'DarkVador',    kill: 0, inLove: false, infected: false, hasWin: false },
+        ]
+      },
+      {
+        name: 'Partie 44',
+        winningCamp: { name: 'Villageois' },
+        winners: ['DemoPlayer', 'Alice', 'Charlie'],
+        plysNote: [
+          { name: 'DemoPlayer', role: 'Traqueur',         kill: 1, inLove: false, infected: false, hasWin: true  },
+          { name: 'Alice',      role: 'Sorcière',         kill: 0, inLove: false, infected: false, hasWin: true  },
+          { name: 'Charlie',    role: 'Simple Villageois', kill: 0, inLove: false, infected: false, hasWin: true  },
+        ]
+      }
+    ]
+  };
+  // Injecter dans ME.playerData pour tester le rendu sans backend
+  if (!ME) ME = { pseudo: 'DemoPlayer', id: 'demo', mcName: 'DemoPlayer', createdAt: Date.now(), playerData: null };
+  ME.playerData = demo;
+  document.getElementById('prof-pd').style.display    = '';
+  document.getElementById('prof-no-pd').style.display = 'none';
+  renderProfile();
+  // Afficher un avertissement
+  document.getElementById('prof-pseudo').innerHTML =
+    `DemoPlayer <span style="font-size:11px;color:#f59e0b;font-style:italic">[données fictives — test d'affichage]</span>`;
+}
+
+function toggleRawData() {
+  const el = document.getElementById('prof-raw-data');
+  if (el.style.display === 'none') {
+    const pd = ME && ME.playerData;
+    if (!pd) { el.textContent = 'Aucune donnée playerData dans ME.'; el.style.display = ''; return; }
+    // Afficher le JSON formaté avec highlight des champs clés
+    el.textContent = JSON.stringify(pd, null, 2);
+    el.style.display = '';
+  } else {
+    el.style.display = 'none';
+  }
+}
+
+async function saveSettings() {
+  const pseudo  = document.getElementById('s-pseudo').value.trim();
+  const mcName  = document.getElementById('s-mcname').value.trim();
+  const pw      = document.getElementById('s-pw').value;
+  const pw2     = document.getElementById('s-pw2').value;
+  document.getElementById('s-err').classList.remove('v');
+  document.getElementById('s-ok').classList.remove('v');
+  if (pw && pw !== pw2) { document.getElementById('s-err').textContent = 'Mots de passe différents'; document.getElementById('s-err').classList.add('v'); return; }
+  try {
+    const body = { pseudo, mcName: mcName || null };
+    if (pw) body.password = pw;
+    const data = await api('PUT', '/api/me', body);
+    ME = { ...ME, ...data.user };
+    document.getElementById('s-ok').textContent = 'Sauvegardé !'; document.getElementById('s-ok').classList.add('v');
+    updateAuthUI(); await loadMe();
+  } catch(e) { document.getElementById('s-err').textContent = e.message; document.getElementById('s-err').classList.add('v'); }
+}
+
+async function deleteAccount() {
+  if (!confirm('Supprimer définitivement votre compte ?')) return;
+  try { await api('DELETE', '/api/me'); logout(); } catch(e) { alert(e.message); }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  AMIS
+// ══════════════════════════════════════════════════════════════════════════
+async function loadFriends() {
+  const wrap = document.getElementById('friends-list');
+  try {
+    const friends = await api('GET', '/api/friends');
+    if (!friends.length) {
+      wrap.innerHTML = `<div class="empty"><div class="empty-icon">👥</div><div class="empty-text">Aucun ami pour l'instant</div><div class="empty-sub">Cliquez sur "Ajouter" pour rechercher des joueurs.</div></div>`;
+      return;
+    }
+    wrap.innerHTML = `<div style="display:flex;flex-direction:column;gap:10px">${friends.map(f => {
+      const pd = f.playerData;
+      const ws = pd ? winStats(pd) : null;
+      const pvpK = pd ? (pd.pvpZoneKill || 0) : 0;
+      const info = ws ? `${pd.xp || 0} XP · ${ws.wr}% WR · ⚔️ ${pvpK} kills PvP` : 'Aucune donnée importée';
+      return `<div class="friend-item">
+        <div class="fava ${f.online ? 'on' : ''}" style="background:var(--bg4);color:var(--text)">${f.pseudo.charAt(0).toUpperCase()}</div>
+        <div class="fi2">
+          <div class="fp">${f.pseudo} ${f.online ? '<span class="pill pg" style="font-size:10px;padding:1px 7px">En ligne</span>' : ''}</div>
+          <div class="fu">@${f.id}</div>
+          <div class="fst">${f.online ? 'Actif maintenant' : 'Vu le ' + new Date(f.lastSeen).toLocaleDateString('fr-FR')} · ${info}</div>
+        </div>
+        <div class="fa">
+          <button class="btn btn-outline btn-sm" onclick="viewFriend('${f.id}')">Voir</button>
+          <button class="btn btn-sm" style="background:rgba(248,113,113,.1);color:var(--red);border:1px solid rgba(248,113,113,.2)" onclick="removeFriend('${f.id}')">✕</button>
+        </div>
+      </div>`;
+    }).join('')}</div>`;
+  } catch(e) {
+    wrap.innerHTML = `<div class="empty"><div class="empty-text">Erreur : ${e.message}</div></div>`;
+  }
+}
+
+async function loadRequests() {
+  const wrap    = document.getElementById('requests-list');
+  const badge   = document.getElementById('req-badge');
+  const tbBadge = document.getElementById('notif-n');
+  try {
+    const reqs = await api('GET', '/api/friends/requests');
+    if (reqs.length > 0) {
+      badge.textContent = reqs.length; badge.style.display = 'inline-block';
+      document.getElementById('notif-btn').style.display = 'flex';
+      tbBadge.textContent = reqs.length;
+    } else {
+      badge.style.display = 'none';
+      document.getElementById('notif-btn').style.display = 'none';
+    }
+    if (!reqs.length) {
+      wrap.innerHTML = `<div class="empty"><div class="empty-icon">🔔</div><div class="empty-text">Aucune demande en attente</div></div>`;
+      return;
+    }
+    wrap.innerHTML = reqs.map(r => `<div class="req-item">
+      <div style="width:40px;height:40px;border-radius:50%;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff">${r.pseudo.charAt(0).toUpperCase()}</div>
+      <div><div style="font-weight:700">${r.pseudo}</div><div style="font-size:12px;color:var(--text2)">@${r.id}</div></div>
+      <div class="req-actions">
+        <button class="btn btn-success btn-sm" onclick="acceptFriend('${r.id}')">✓ Accepter</button>
+        <button class="btn btn-outline btn-sm" onclick="declineFriend('${r.id}')">✕</button>
+      </div>
+    </div>`).join('');
+  } catch(e) {
+    wrap.innerHTML = `<div class="empty"><div class="empty-text">Erreur : ${e.message}</div></div>`;
+  }
+}
+
+async function sendFriendReq() {
+  const tid = document.getElementById('af-u').value.trim();
+  const err = document.getElementById('af-err'); err.classList.remove('v');
+  const ok  = document.getElementById('af-ok');  ok.classList.remove('v');
+  try {
+    await api('POST', '/api/friends/request', { targetId: tid });
+    ok.textContent = 'Demande envoyée !'; ok.classList.add('v');
+    document.getElementById('af-u').value = '';
+  } catch(e) { err.textContent = e.message; err.classList.add('v'); }
+}
+
+async function acceptFriend(id) {
+  try { await api('POST', '/api/friends/accept', { requesterId: id }); loadRequests(); loadFriends(); }
+  catch(e) { alert(e.message); }
+}
+async function declineFriend(id) {
+  try { await api('POST', '/api/friends/decline', { requesterId: id }); loadRequests(); }
+  catch(e) { alert(e.message); }
+}
+async function removeFriend(id) {
+  if (!confirm('Retirer cet ami ?')) return;
+  try { await api('DELETE', '/api/friends/' + id); loadFriends(); }
+  catch(e) { alert(e.message); }
+}
+
+async function viewFriend(id) {
+  try {
+    const f  = await api('GET', '/api/users/' + id);
+    const pd = f.playerData;
+    const ws = pd ? winStats(pd) : null;
+    const online = Date.now() - f.lastSeen < 5 * 60 * 1000;
+    const panelId = 'fn-' + id.replace(/[^a-z0-9]/gi, '_');
+
+    let html = `<div class="flex ic gap12 mb20">
+      <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#a78bfa);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff">${f.pseudo.charAt(0).toUpperCase()}</div>
+      <div>
+        <div style="font-size:20px;font-weight:800">${f.pseudo}</div>
+        <div style="color:var(--text2);font-size:13px">@${f.id} · ${online ? '<span style="color:var(--green)">🟢 En ligne</span>' : 'Vu le ' + new Date(f.lastSeen).toLocaleDateString('fr-FR')}</div>
+      </div>
+    </div>`;
+
+    if (pd) {
+      const pvpK = (pd.pvpZoneKill  != null) ? Number(pd.pvpZoneKill)  : 0;
+      const pvpD = (pd.pvpZoneDeath != null) ? Number(pd.pvpZoneDeath) : 0;
+      const pvpR = pvpD > 0 ? (pvpK / pvpD).toFixed(2) : (pvpK > 0 ? '∞' : '—');
+
+      html += `
+        <div class="pd-grid mb12">
+          <div class="pd-stat"><div class="pd-val">${pd.xp || 0}</div><div class="pd-lbl">XP</div></div>
+          <div class="pd-stat"><div class="pd-val">${ws.total}</div><div class="pd-lbl">Parties LG</div></div>
+          <div class="pd-stat"><div class="pd-val">${ws.wr}%</div><div class="pd-lbl">Win rate</div></div>
+          <div class="pd-stat"><div class="pd-val">${pd.feathers || 0}</div><div class="pd-lbl">Feathers</div></div>
+        </div>
+        <div class="pvp-section mb12">
+          <div class="pvp-title">⚔️ Zone PvP</div>
+          <div class="pvp-grid">
+            <div class="pvp-stat"><div class="pvp-val">${pvpK}</div><div class="pvp-lbl">Kills PvP</div></div>
+            <div class="pvp-stat"><div class="pvp-val">${pvpD}</div><div class="pvp-lbl">Morts PvP</div></div>
+            <div class="pvp-stat"><div class="pvp-val">${pvpR}</div><div class="pvp-lbl">K/D Ratio</div></div>
+          </div>
+        </div>`;
+
+      html += `<div style="font-weight:700;margin-bottom:8px;font-size:14px">♾️ Pierres d'Infinité</div>
+        <div style="margin-bottom:14px">${stonesHTML(pd)}</div>`;
+
+      const siHTML = specialItemsHTML(pd);
+      if (siHTML) html += `<div style="font-weight:700;margin-bottom:8px;font-size:14px">🎒 Inventaire spécial</div><div class="si-grid mb14">${siHTML}</div>`;
+
+      const gHTML = gradesHTML(pd);
+      if (gHTML) html += `<div style="font-weight:700;margin-bottom:8px;font-size:14px">🏅 Grades</div><div style="margin-bottom:14px">${gHTML}</div>`;
+
+      const notes = pd.notes || [];
+      if (notes.length) {
+        html += `<div class="flex ic jb mt16 mb8">
+          <div style="font-weight:700;font-size:14px">📜 Historique (${notes.length} partie${notes.length > 1 ? 's' : ''})</div>
+          <span style="font-size:11px;color:var(--text2)">▶ Cliquer pour le détail</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th style="width:28px"></th><th>Partie</th><th>Camp</th><th>Résultat</th><th>Joueurs</th></tr></thead>
+            <tbody id="${panelId}"></tbody>
+          </table>
+        </div>`;
+      }
+
+    } else {
+      html += `<div class="info-box">Ce joueur n'a pas encore de données importées depuis le serveur Minecraft.</div>`;
+    }
+
+    document.getElementById('m-friend-content').innerHTML = html;
+    openM('m-friend');
+
+    if (pd && (pd.notes || []).length) {
+      renderNotes(pd.notes, pd.Name || pd.name || '', panelId);
+    }
+  } catch(e) { alert(e.message); }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  PAGE ITEMS CATALOG
+// ══════════════════════════════════════════════════════════════════════════
+function renderCatalog() {
+  const grid = document.getElementById('items-catalog-grid');
+  if (!grid) return;
+  grid.innerHTML = ITEMS_CATALOG.map(item => {
+    const tagHTML = (item.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+    return `
+      <div class="catalog-card" style="border-color:${item.border}">
+        <div class="catalog-stripe" style="background:${item.color}"></div>
+        <span class="catalog-icon">${item.icon}</span>
+        <div class="catalog-name" style="color:${item.color}">${item.name}</div>
+        <code class="catalog-key">${item.key}</code>
+        <div class="catalog-mode" style="color:${item.color};background:${item.color}18;border:1px solid ${item.border}">${item.mode}</div>
+        <div class="catalog-desc">${item.desc}</div>
+        <div class="tags mb8">${tagHTML}</div>
+        <div class="catalog-how"><b>Obtention :</b> ${item.howToGet}</div>
+      </div>`;
+  }).join('');
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  DONNÉES STATIQUES — Rôles LG
+// ══════════════════════════════════════════════════════════════════════════
+const ROLES = [
+  {n:"Simple Villageois",c:"village",a:"lum",xp:100,d:"Le simple villageois gagne avec les villageois sans aucun pouvoir hormis son droit de vote et son épée. Aura = lumineuse",t:["passive"]},
+  {n:"Voyante",c:"village",a:"lum",xp:70,info:true,d:"La voyante peut espionner un joueur à chaque épisode, mais gare à elle si elle se trompe. Aura = lumineuse",t:["cmd:/lg voir [joueur]"]},
+  {n:"Sorcière",c:"village",a:"neu",xp:70,d:"La sorcière gagne avec le village. La sorcière peut une fois dans la partie, réssuciter un joueur en clicquant sur un message, de plus elle possède une potion de instant heal, une d'instant damage et une de régénération, Aura = Neutre",t:["power:Résurrection ×1"]},
+  {n:"Chasseur",c:"village",a:"neu",xp:70,d:"Le chasseur doit gagner avec les villageois, pour cela il possède un arc power 3, 20% de force contre les loups, et peut tirer sur un joueur à sa mort pour lui infliger 5 coeurs et lui faire perdre sa force s'il est loup. Aura neutre",t:["cmd:/lg tirer [joueur]","passive:+20% vs loups"]},
+  {n:"Salvateur",c:"village",a:"lum",xp:80,d:"Le salvateur gagne avec le village, il possède 2 potion d'instant heal et peut donner résistance à un joueur pendant 20min à chaque épisode Aura lumineuse",t:["cmd:/lg proteger [joueur]"]},
+  {n:"Corbeau",c:"village",a:"neu",xp:70,d:"Le corbeau gagne avec le village, à chaque fois que son vote correspond à la personne la plus voté, ce sera indiqué dans le chat, il recevra 2 gapple la 1ere fois, 4 la 2e,puis 2 coeur permanents, puis resistance 1. Aura neutre",t:["passive:Bonus de vote"]},
+  {n:"Sœur",c:"village",a:"lum",xp:80,d:"Les soeurs possèdent force quand elles sont à moins de 20 blocs d'une de leurs soeurs, elle obtienne également le pseudo du tueur d'une soeur qui viendrait à mourir.  Aura lumineuse",t:["passive:Force conditionnelle"]},
+  {n:"Montreur d'Ours",c:"village",a:"lum",xp:70,info:true,d:"Le montreur d'ours gagne avec le village, à chaque épisode, un ''GRRRR'' apparait dans le chat pour chaque loups dans les 50 blocs autour de lui, Aura lumineuse",t:["Rayon 50 blocs"]},
+  {n:"Petite Fille",c:"village",a:"lum",xp:80,d:"La petite fille doit gagner avec le village, pour cela, elle peut devenir invisible 5 minutes par nuit, et peut voir le chat des loups-garou",t:["night:Invisibilité nocturne","power:Chat loup"]},
+  {n:"Bienfaiteur",c:"village",a:"lum",xp:100,d:"Le bienfaiteur gagne avec le village, pour cela il peut donner 4 fois un coeur avec la commande /lg conferer [nomDuJoueur], de plus il possède 2 livres protection 2. Aura lumineuse",t:["cmd:/lg conferer [joueur]"]},
+  {n:"Idiot du Village",c:"village",a:"lum",xp:120,d:"L'idiot du village gagne avec le village (j'aurais pas pensé !!), si le village vient à l'éliminer, il réssucitera avec 2 coeurs en moins. Aura lumineuse",t:["power:Résurrection anti-vote"]},
+  {n:"Renard",c:"village",a:"lum",xp:75,info:true,d:"Le renard gagne avec le village, pour cela il peut connaitre le role d'un joueur après etre resté 10min à coté de lui, il y a cependant 15% de chance que le role ne soit pas bon, +5% par flairage déjà effectué. Aura lumineuse",t:["cmd:/lg flairer [joueur]"]},
+  {n:"Ancien",c:"village",a:"lum",xp:70,d:"L'ancien gagne avec le village, pour cela il possède une resistance permanente, s'il meure par les loups-garou, il ressucitera mais perdra sa résistance. Aura lumineuse",t:["passive:+20% résistance perma"]},
+  {n:"Sage",c:"village",a:"lum",xp:90,info:true,d:"Le vieux sage gagne avec les villageois, pour cela il obtiendra le taux de présence de chaque aura autour de lui, (voir aura dans /lg help) fréquenter un joueur fera augmenter la barre de l'aura correspondant à son aura. Aura lumineuse",t:["passive:Jauges d'aura"]},
+  {n:"Disciple",c:"village",a:"lum",xp:80,info:true,d:"Le disciple gagne avec le village, pour cela il connait l'identité du vieux sage, après 20min à ses cotés, le vieux sage obtiendra son identité, après 30min, il aura accès 2 fois à la commande /lg aura [nomDuJoueur] lui permettant d'obtenir l'aura d'un joueur, au bout de 45min, il obtiendra speed 0,5. Aura Lumineuse",t:["cmd:/lg aura [joueur]","cmd:/lg trouver"]},
+  {n:"Allumeur de Lampadaire",c:"village",a:"neu",xp:110,d:"L'allumeur de lampadaire gagne avec le village, pour cela, il rend l'aura des joueurs autour de lui correspondant à leur objectif de victoire au bout de 10min à coté d'eux. Aura neutre ",t:["passive:Correction d'aura"]},
+  {n:"Interprète",c:"village",a:"neu",xp:95,d:"L'interprète gagne avec le village, pour cela il peut interpréter 1 role entre 3 qui lui seront communiqués peu avant le début d'un épisode, il incarnera ce role pendant l'épisode, il ne peut interpréter chaque role qu'une fois. Aura neutre",t:["cmd:/lg choisir [rôle]"]},
+  {n:"Analyste",c:"village",a:"lum",xp:90,info:true,d:"L'analyste gagne avec les villageois, il possède 2 commandes. La première est /lg analyse utilisable une fois par épisode permet de connaitre la somme des pourcentage d'effet de tous les joueurs dans les 20 blocs alentours, l'analyste exclus. La deuxième /lg analysePlus utilisable à une seule occasion permet de connaitre la somme des pourcentage d'effet de force et (séparément) de résistance des joueurs alentours. Aura lumineuse",t:["cmd:/lg analyse"]},
+  {n:"Comédien",c:"village",a:"lum",xp:80,d:"Le comédien gagne avec les Villageois, pour cela, son pouvoir change en fonction du registre de la pièce. Si le registre tragique est à 20%, il aura 20% de chance de connaitre l'aura d'un joueur, 20% de chance de connaitre son nombre de kill, et 20% de chance de savoir s'il a un effet. Il possède une résistance proportionnelle à taux d'Epique, (20% d'epique = 4% de resistance, 50% = 10% et 100% = 20%). Pour un taux de oratoire à 20%, il aura 20% de chance de connaitre l'ensemble des pseudos des joueurs ayant voté pour la personne la + votée.",t:["Registre-dépendant"]},
+  {n:"Ermite",c:"village",a:"unk",xp:70,d:"L'ermite gagne avec les Villageois, il possède 30% de force le jour et 20% de résistance la nuit, mais pour chaque joueur autour de lui, il perdra 5% de force, le jour et 3% de resistance la nuit, il peut donc avoir un malus au lieu d'un bonus si trop de joueurs. Si le registre est tragique, il gagne 10% de résistance, s'il est oratoire, il perd 10% de force. Sa mort ne sera pas annoncée.  Aura Unknown",t:["passive:Solitaire","Mort silencieuse"]},
+  {n:"Parrain",c:"village",a:"dan",xp:75,d:"Le parrain gagne avec le village, pour cela, il peut mettre une prime sur un joueur à chaque épisode, cette prime sera envoyé à un 1 joueur du camp opposé au hasard, s'il le tue, les 2 gagneront 5% de force et 1/2 coeur permanent Aura Dangereuse",t:["cmd:/lg prime [joueur]"]},
+  {n:"Traqueur",c:"village",a:"neu",xp:75,d:"Villageois, aura neutre, peut traquer un joueur avec la commande /lg traquer [nomDuJoueur] (rayon de 20 blocs + pas de changement jusqu'à sa mort). Puis le traqueur peut connaitre la position et le nombre de kill du joueur traqué à tout moment avec la commande /lg traque.",t:["cmd:/lg traquer [joueur]"]},
+  {n:"Fauconnier",c:"village",a:"neu",xp:75,info:true,d:"description à faire, role à info aura neutre",t:["cmd:/lg faucon"]},
+  {n:"Simple Loup-Garou",c:"wolf",a:"obs",xp:100,d:"Le loup garou simple gagne avec les loups, et possède la force des loups. Aura obscure",t:["night:Force I nocturne"]},
+  {n:"Infect Père des Loups",c:"wolf",a:"dan",xp:70,d:"L'infect père des loups (ou IPDL) possède force de nuit, de plus il peut choisir une fois dans la partie de réssuciter un joueur victime des loups garou en clicquant sur un message, celui-ci sera infecté et devra gagner avec les loups. Aura = Dangereuse",t:["night:Force I nocturne","power:Infection ×1"]},
+  {n:"Loup-Garou Barbare",c:"wolf",a:"obs",xp:70,d:"Le loup garou barbare possède force 0.5 perma, et a 5% de chance d'infliger un demi coeur en plus à chaque coup, pourcentage qui augmentera de 4% à chaque kill. A chaque kill, il gagne 2min de résistance mais perd 1 coeur permanent. Aura Obscure",t:["passive:Force perma"]},
+  {n:"Loup Mystique",c:"wolf",a:"obs",xp:80,d:"Le loup mystique gagne avec les loups, il possède la force des loups, et obtient un role aléatoire à chaque mort d'un loup. Aura obscur",t:["night:Force I nocturne","power:Rôle aléatoire"]},
+  {n:"Loup Perfide",c:"wolf",a:"obs",xp:85,d:"Le loup perfide gagne avec les loups-garou, pour cela il possède la force des loups et peut se mettre invisible 5min par nuit. Aura obscure",t:["night:Force I nocturne","night:Invisibilité 5 min/nuit"]},
+  {n:"Loup Métamorphe",c:"wolf",a:"obs",xp:70,d:"Le loup métamorphe gagne avec les loups et possède la force des loups, il volera le role du premier joueur qu'il tuera. Aura obscure",t:["power:Vol rôle au 1er kill"]},
+  {n:"Loup Brumeux",c:"wolf",a:"obs",xp:85,d:"Le loup brumeux gagne avec les loups-garou, il peut, 2 fois dans la partie, cacher la mort d'un joueur.",t:["cmd:/lg brumer [joueur]"]},
+  {n:"Loup Grimeur",c:"wolf",a:"obs",xp:80,d:"Le loup garou grimeur possède la force des loups de nuit, il gagne avec les loups et peut afficher les joueurs qu'il a tués comme loup garou à l'annonce de leurs rôles malgrés leurs véritables rôles",t:["cmd:/lg grimer [joueur]"]},
+  {n:"Loup Hurleur",c:"wolf",a:"obs",xp:85,d:"Le loup hurleur gagne avec les loups, il possède une aura obscure. Deux fois dans la partie, il peut hurler avec la commande /lg hurler. Les loups aux alentours entendront le hurlement et gagneront tous un effet de régénération léger. Pour chaque loup aux alentours, le hurleur 5 secondes de régénération.",t:["cmd:/lg hurler"]},
+  {n:"Loup Alchimiste",c:"wolf",a:"obs",xp:100,d:"Le loup garou alchimiste gagne avec les loups mais ne possède pas leur force, il peut une fois mettre un virus sur un joueur à coté de qui il est resté 5min, cette infection peut prendre 3 formes, le parasite qui prendra effet après 10min, mais qui pourra etre transmis par un kill de l'infecté, l'epidémie qui se transmet de joueur en joueur, le joueur sera avertis après une min, et le poison qui affaiblit la victime jusqu'à la mort du loup alchimiste Aura obscure",t:["cmd:/lg virus [joueur]"]},
+  {n:"Loup Manipulateur",c:"wolf",a:"unk",xp:70,d:"Le loup garou manipulateur gagne avec les loups garou, mais ne possède pas force, à chaque épisode, il peut aveugler un joueur, si ce joueur a un role à info, le loup manipulateur obtiendra son role et l'aveuglera, ce qui empechera le joueur de gagner des info pour l'épisode Aura ///UNKNOWN///",t:["cmd:/lg aveugler [joueur]"]},
+  {n:"Loup Craintif",c:"wolf",a:"unk",xp:70,d:"Le loup craintif gagne avec les Loups Garous (possède la liste de ses alliés loups), pour cela il obtient 30% de force la nuit et 20% de résistance le jour, moins 5% de résistance le jour par loup-garou proche de lui, et moins 7% de force par loup-garou proche la nuit. Si le registre est oratoire, il perd 10% de force, s'il est tragic il gagne 5% de résistance. Sa mort est cachée.   Aura Unknown",t:["passive:Force/Résistance","Mort silencieuse"]},
+  {n:"Loup Sanguinaire",c:"wolf",a:"obs",xp:70,wip:true,d:"description à faire",t:[]},
+  {n:"Servant des Loups",c:"wolf",a:"neu",xp:60,d:"Le servant des loups ne peut pas etre attribué à l'attribution des roles, il gagne avec les loups et possède la force des loups. Il est rattaché à un maitre (loup), si celui-ci meure, le loup servant meure à la place Aura Neutre",t:["passive:Bouclier du maître"]},
+  {n:"Assassin",c:"solo",a:"neu",xp:140,d:"L'assassin gagne tout seul, pour cela il peut fabriquer une sharpness 4, possède force de jour, et obtient 3 livres: sharpness 3, protection 3, efficacité 3. Aura neutre",t:["day:Force I diurne"]},
+  {n:"Pyromane",c:"solo",a:"neu",xp:140,d:"Le pyromane gagne tout seul, il possède fire aspect et flame activable ou desactivable avec /lg fireaspect, il peut recouvrir 2 joueurs à moins de 20 blocs avec /lg recouvrir [nomDuJoueur], et tous les enflammer avec /lg enflammer pour les enflammer pendant 20 sec sans qu'ils puissent d'éteindre. Aura neutre",t:["cmd:/lg switchfire","cmd:/lg recouvrir","cmd:/lg enflammer"]},
+  {n:"Voleur",c:"solo",a:"obs",xp:120,d:"Le voleur gagne tout seul, il possède force jusqu'à 90min, et vole le role et le camp du premier joueur qu'il tuera. Aura obscur ",t:["passive:+20% force perma"]},
+  {n:"Ange de Thiercelieux",c:"solo",a:"lum",xp:140,d:"L'ange de thiercelieux gagne tout seul, il peut craft une sharpness 4, quand il est accusé, il gagne 20% de force contre l'accuseur et connait son role, 5% de résistance et 1 coeur permanents, et l'accuseur ne possède pas 20% de force contre lui. Si l'ange de T tue l'accuseur, sa mort ne sera pas annoncée. Aura Lumineuse",t:["power:Réaction accusation"]},
+  {n:"Araignée",c:"solo",a:"lum",xp:130,d:"L'araignée gagne toute seule. Pour cela elle possède une jauge de manipulation pour chaque joueur qui augmente de 0.1% à chaque seconde lorsqu'elle se trouve à moins de 20 blocs du joueur et de 10% si ce joueur fait un kill à moins de 20 blocs. Si cette jauge atteint 100%, le joueur perdra 1/2 coeur que l'araignée récupérera au début de chaque épisode où les deux joueurs sont éloignés de moins de 20 blocs. De plus l'araigné peut utiliser la commande /lg aveugler [nomduJoueur] à deux reprise pour aveugler un role à information. Enfin, l'araignée peut réssuciter une seule fois si elle se fait tuer par un joueur manipulé à 100%. Aura lumineuse.",t:["passive:Jauge manipulation"]},
+  {n:"Thanos",c:"solo",a:"dan",xp:200,d:"Vous verrez",t:["power:6 pierres d'infinité"]},
+  {n:"Sorcier",c:"solo",a:"neu",xp:80,d:"Le sorcier a 50% de gagner tout seul, et 50% de gagner avec le village, il peut créer des potions avec certains matériaux. Ces potions ont des effets divers, ce sont celles que des joueurs normaux trouverait dans des batiments bonus.",t:["power:Craft potions"]},
+  {n:"Négociateur",c:"solo",a:"lum",xp:110,d:"Le négociateur peut gagner avec les villageois et les loups à condition que les joueurs restant à la fin de la partie aient passé au moins 10min à coté du négociateur et que les joueurs tués par le négociateur du même camp que celui restant aient passé moins de 15min à coté des joueurs encore en vie. Aura lumineuse",t:["passive:Double victoire"]},
+  {n:"Démon",c:"solo",a:"obs",xp:150,wip:true,d:"",t:[]},
+  {n:"Cupidon",c:"love",a:"neu",xp:120,d:"Le cupidon gagne avec le couple qu'il aura désigné, et il possède un arc punch 1, cependant si un membre de ce couple meure, l'autre mourra aussi. Aura neutre",t:["cmd:/lg couple [j1] [j2]"]},
+  {n:"Enfant Sauvage",c:"special",a:"neu",xp:90,d:"L'enfant sauvage gagne avec le village, il choisit un modèle, si ce modèle meure, il passera loup-garou, et aura la force des loups. Aura neutre",t:["cmd:/lg choose [joueur]"]},
+  {n:"Ange Gardien",c:"special",a:"lum",xp:130,d:"Description non fini Aura lumineuse",t:["power:Protégé / Cible"]},
+  {n:"Nécromancien",c:"special",a:"obs",xp:130,wip:true,d:"description à faire",t:[]},
+  {n:"Swapper",c:"special",a:"neu",xp:0,d:"Role automatique du scénario teamSwapper",t:["Mode TeamSwapper"]},
+];
+
+const EVENTS = [
+  {n:"Exposed",d:"Probabilité qu'un joueur aléatoire soit exposé : 4 rôles révélés dont son vrai rôle.",note:"Conditionné par le taux Tragique si Théâtre actif."},
+  {n:"Brume",d:"Probabilité que chaque mort soit cachée dans le chat.",note:"Distinct de la Brume du Loup Brumeux (ciblée)."},
+  {n:"Premonition",d:"Un joueur reçoit un pressentiment flou sur les auras proches.",note:"Info supplémentaire aléatoire."},
+  {n:"Trouple",d:"Probabilité que le couple de Cupidon soit un trouple (3 joueurs liés).",note:"Actif uniquement si Cupidon est dans la composition."},
+  {n:"Mal visé",d:"Cupidon rate et se retrouve lui-même dans le couple.",note:"Perd le contrôle de son pouvoir."},
+  {n:"Loup Solitaire",d:"Un loup devient solitaire (+4 cœurs, +5% résistance). Une seule fois.",note:"Doit désormais gagner seul."},
+  {n:"Couple aléatoire",d:"Le couple est désigné aléatoirement, pas par Cupidon.",note:"Peut relier des ennemis."},
+  {n:"Nombre Bâtiments Leurre",d:"Bâtiments sans intérêt pour diluer les bâtiments bonus.",note:"Valeur entière."},
+  {n:"Nombre Bâtiments Bonus",d:"Bâtiments avec loot : AuraAnalyser, AuraPotion, TpPotion, Paralysie, Bienfaisance.",note:"Ne pas trop élever."},
+  {n:"AutomaticCheckWin",d:"Probabilité (100% par défaut) que la victoire soit vérifiée après chaque mort.",note:"0% = vérification manuelle."},
+];
+
+const SCENARIOS = [
+  {n:"🎭 Théâtre",tag:"Immersion",d:"Active le système de Registres. La partie évolue entre Tragique, Oratoire et Épique.",fx:"Rôles affectés : Comédien, Ermite, Loup Craintif."},
+  {n:"⚔️ DirectFights",tag:"Combat",d:"Rôles visibles de tous. Mode Meetup (kit complet). PvP frontal.",fx:"XP divisé par 5."},
+  {n:"💀 Necromancie",tag:"Spécial",d:"Active le Nécromancien. Doit être dans la composition.",fx:"En cours de développement."},
+  {n:"🔴 TeamSwapper — Duel",tag:"Équipes",d:"2 équipes : Rouge, Bleu.",fx:"Vote → le plus voté change d'équipe."},
+  {n:"🟠 TeamSwapper — Trio",tag:"Équipes",d:"3 équipes : Rouge, Bleu, Rose.",fx:""},
+  {n:"🟣 TeamSwapper — Quatuor",tag:"Équipes",d:"4 équipes : Rouge, Bleu, Rose, Vert.",fx:"16+ joueurs recommandé."},
+  {n:"🟡 TeamSwapper — Five",tag:"Équipes",d:"5 équipes : Rouge, Bleu, Rose, Vert, Jaune.",fx:"20+ joueurs recommandé."},
+];
+
+const STAR_ROLES = [
+  {n:"Luke Skywalker",a:"LucSkywalker",s:"jedi",d:"+20% force près de Leïa (15 blocs). Sabre + blaster.",ls:true,gun:true},
+  {n:"Obi-Wan Kenobi",a:"Obiwan",s:"jedi",d:"+20% résistance perma. Ataru : éjecte les joueurs dans 3 blocs en parade.",ls:true,gun:false},
+  {n:"Maître Yoda",a:"MaitreYoda",s:"jedi",d:"12% d'esquive. Inflige 10s de Speed au joueur frappé.",ls:true,gun:false},
+  {n:"Mace Windu",a:"MaitreWindu",s:"jedi",d:"Force variable vs Sith. +5% force/kill.",ls:true,gun:false},
+  {n:"Qui-Gon Jinn",a:"QuiGon",s:"jedi",d:"Particules colorées autour des joueurs blessés (indicateur de vie).",ls:true,gun:false},
+  {n:"Princesse Leïa",a:"Leila",s:"jedi",d:"+10% force alliés / -10% ennemis dans 15 blocs. Regen alliés à sa mort.",ls:false,gun:true},
+  {n:"Han Solo",a:"HanSolo",s:"jedi",d:"20% de chance de gagner 1% force à chaque attaque.",ls:false,gun:true},
+  {n:"Chewbacca",a:"Chewbaca",s:"jedi",d:"+10% résistance près de Han Solo. Blaster : 30% d'explosion +1 cœur.",ls:false,gun:true},
+  {n:"Dark Vador",a:"DarkVador",s:"sith",d:"+15% force perma. Strangle ×2 (Blind+Slow+Poison 3s). Item Sith.",ls:true,gun:false},
+  {n:"Dark Sidious",a:"Palpatine",s:"sith",d:"Lightning ×2 (2 cœurs). Item Sith. Sabre, pas de blaster.",ls:true,gun:false},
+  {n:"Comte Dooku",a:"Dooku",s:"sith",d:"+15% force vs sabres. Makashi : duel forcé 30s.",ls:true,gun:false},
+  {n:"Dark Maul",a:"DarkMaul",s:"sith",d:"Item Sith. Ressuscite 1× (-2 cœurs perma).",ls:true,gun:false},
+  {n:"Général Grievous",a:"Grievous",s:"sith",d:"+5% force/kill sur utilisateur de sabre.",ls:false,gun:false},
+  {n:"Stormtrooper",a:"Stormtrooper",s:"sith",d:"Blaster toujours plein. Régénère toute sa vie à chaque kill.",ls:false,gun:true},
+  {n:"Garde Impérial",a:"GardeImpérial",s:"sith",d:"2 joueurs : vie partagée (20 cœurs). +10% résistance à -10 blocs l'un de l'autre.",ls:false,gun:false},
+  {n:"Jango Fett",a:"JangoFett",s:"neutral",d:"12 cœurs. Vol ½ cœur 10%. Flamethrower : rayon de feu 4s. Blaster.",ls:false,gun:true},
+];
+
+// ══════════════════════════════════════════════════════════════════════════
+//  RENDU — Rôles / Events / Scenarios / Star
+// ══════════════════════════════════════════════════════════════════════════
+const AURA_MAP = { lum:'blum Lumineuse', obs:'bobs Obscure', neu:'bneu Neutre', dan:'bdan Dangereuse', unk:'bunk Inconnue' };
+let campFilter = 'all';
+
+function renderRoles(q = '') {
+  q = q || document.getElementById('role-q').value.toLowerCase();
+  const filtered = ROLES.filter(r => {
+    const mc = campFilter === 'all' || r.c === campFilter;
+    const mq = !q || r.n.toLowerCase().includes(q) || r.d.toLowerCase().includes(q);
+    return mc && mq;
+  });
+  document.getElementById('roles-grid').innerHTML = filtered.map(r => {
+    const [ac, an] = (AURA_MAP[r.a] || 'bneu Neutre').split(' ');
+    return `<div class="rc fi-anim" data-c="${r.c}">
+      <div class="rc-hdr">
+        <div class="rc-name">${r.n}</div>
+        <div class="badges">
+          <span class="badge ${ac}">${an}</span>
+          ${r.info ? '<span class="badge binf">Info</span>' : ''}
+          ${r.wip  ? '<span class="badge bwip">En dev</span>' : ''}
+          <span class="badge bxp">${r.xp} XP</span>
+        </div>
+      </div>
+      <div class="rc-desc">${r.d}</div>
+      <div class="tags">${r.t.map(t => { const[cl,lb]=t.split(':'); return lb?`<span class="tag ${cl}">${lb}</span>`:`<span class="tag">${t}</span>`; }).join('')}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('lg-count').textContent = `${filtered.length} rôle(s)`;
+}
+
+function filterCamp(c, btn) {
+  campFilter = c;
+  document.querySelectorAll('.cf').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRoles();
+}
+
+function renderEvents() {
+  document.getElementById('events-grid').innerHTML = EVENTS.map(e => `
+    <div class="ev-card fi-anim">
+      <div class="ev-name">${e.n}</div><div class="ev-desc">${e.d}</div>
+      ${e.note ? `<div class="ev-note">${e.note}</div>` : ''}
+    </div>`).join('');
+}
+
+function renderScenarios() {
+  document.getElementById('scenarios-grid').innerHTML = SCENARIOS.map(s => `
+    <div class="sc-card fi-anim">
+      <div class="flex jb ic mb8"><div class="sc-name">${s.n}</div><span class="badge bwip">${s.tag}</span></div>
+      <div class="sc-desc">${s.d}</div>
+      ${s.fx ? `<div class="sc-fx">${s.fx}</div>` : ''}
+    </div>`).join('');
+}
+
+function renderStar() {
+  document.getElementById('star-grid').innerHTML = STAR_ROLES.map(r => `
+    <div class="star-card fi-anim" data-s="${r.s}">
+      <div class="sn">${r.n}</div><div class="sa">${r.a}</div><div class="sd">${r.d}</div>
+      <div class="seq">
+        ${r.ls  ? '<span class="els">⚔️ Sabre laser</span>' : ''}
+        ${r.gun ? '<span class="egun">🔫 Blaster</span>' : ''}
+      </div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  UI — Navigation, modals, menus
+// ══════════════════════════════════════════════════════════════════════════
+function updateAuthUI() {
+  const ava   = document.getElementById('tb-ava');
+  const acLI  = document.getElementById('acm-li');
+  const acLO  = document.getElementById('acm-lo');
+  const accIn  = document.getElementById('acc-in');
+  const accOut = document.getElementById('acc-out');
+  if (ME) {
+    ava.textContent = ME.pseudo.charAt(0).toUpperCase();
+    ava.classList.add('on'); ava.title = ME.pseudo;
+    if (acLI) { acLI.style.display = ''; document.getElementById('acm-pseudo').textContent = ME.pseudo; document.getElementById('acm-user').textContent = '@' + ME.id; }
+    if (acLO) acLO.style.display  = 'none';
+    if (accIn)  accIn.style.display  = '';
+    if (accOut) accOut.style.display = 'none';
+    renderProfile(); loadRequests();
+  } else {
+    ava.textContent = '?'; ava.classList.remove('on'); ava.title = 'Mon compte';
+    if (acLI) acLI.style.display = 'none'; if (acLO) acLO.style.display = '';
+    if (accIn)  accIn.style.display  = 'none';
+    if (accOut) accOut.style.display = '';
+  }
+}
+
+let menuOpen = false;
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  document.getElementById('acmenu').style.display = menuOpen ? 'block' : 'none';
+}
+document.addEventListener('click', e => {
+  const m = document.getElementById('acmenu'), b = document.getElementById('tb-ava');
+  if (menuOpen && !m.contains(e.target) && !b.contains(e.target)) { menuOpen = false; m.style.display = 'none'; }
+});
+
+function openM(id) { document.getElementById(id).classList.add('open'); }
+function closeM(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.mo').forEach(m => m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); }));
+
+function nav(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b => b.classList.remove('active'));
+  const el = document.getElementById('page-' + page);
+  if (el) el.classList.add('active');
+  document.querySelectorAll(`.nb[onclick="nav('${page}')"]`).forEach(b => b.classList.add('active'));
+  window.scrollTo(0, 0);
+  if (page === 'account') loadMe();
+}
+
+function showIT(ns, tab) {
+  const ctx = ns === 'account' ? document.getElementById('acc-in') : document.getElementById('page-' + ns);
+  if (!ctx) return;
+  ctx.querySelectorAll('.it').forEach(t => t.classList.remove('active'));
+  ctx.querySelectorAll('.ip').forEach(p => p.classList.remove('active'));
+  const tabEl = document.getElementById(ns + '-' + tab) || document.getElementById('account-' + tab);
+  if (tabEl) tabEl.classList.add('active');
+  ctx.querySelectorAll(`.it[onclick*="'${tab}'"]`).forEach(b => b.classList.add('active'));
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  API STATUS
+// ══════════════════════════════════════════════════════════════════════════
+async function checkApiStatus() {
+  try {
+    const r = await fetch(API + '/api/auth/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: '__ping__', password: '__ping__' })
+    });
+    const online = r.status === 401 || r.status === 200;
+    document.getElementById('api-dot').className          = `status-dot ${online ? 'dot-on' : 'dot-off'}`;
+    document.getElementById('api-status-text').textContent = online
+      ? `✅ Serveur backend en ligne (${API})`
+      : `⚠️ Serveur inaccessible (${API})`;
+  } catch(e) {
+    document.getElementById('api-dot').className          = 'status-dot dot-off';
+    document.getElementById('api-status-text').textContent = `❌ Serveur non joignable (${API}) — Lancez : node server.js dans lgmore-backend/`;
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════════════════════════════
+renderRoles();
+renderEvents();
+renderScenarios();
+renderStar();
+renderCatalog();
+checkApiStatus();
+if (TOKEN) loadMe();
+else updateAuthUI();
+
+// Heartbeat toutes les 2 min + refresh des demandes
+setInterval(() => {
+  if (TOKEN) {
+    api('POST', '/api/heartbeat').catch(() => {});
+    loadRequests();
+  }
+}, 120000);
+</script>
+</body>
+</html>

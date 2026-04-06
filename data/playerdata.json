@@ -1,0 +1,133 @@
+{
+  "lesantorinien": {
+    "specialItemsOwned": [
+      "Yuta",
+      "Yuta"
+    ],
+    "hasSpaceUsed": false,
+    "notes": [],
+    "hasTimeUsed": false,
+    "hasMindUsed": false,
+    "specialDeathAnnounces": [],
+    "pvpZoneKill": 0,
+    "hasPowerUsed": false,
+    "grades": [],
+    "Name": "LeSantorinien",
+    "pvpZoneDeath": 32,
+    "hasRealityUsed": false,
+    "feathers": 1000,
+    "xp": 0,
+    "hasSoulUsed": false,
+    "_importedAt": 1775414910954
+  },
+  "fitzche": {
+    "specialItemsOwned": [
+      "Yuta",
+      "Yuta",
+      "Jogo",
+      "Dash",
+      "Dash",
+      "Dash",
+      "Dash",
+      "Jogo",
+      "Yuta",
+      "Ataru",
+      "Ataru",
+      "Jacob",
+      "Dash",
+      "Dash",
+      "Dash",
+      "Dash",
+      "Ataru",
+      "Jacob",
+      "Naoya",
+      "Naoya",
+      "Naoya",
+      "Naoya",
+      "Naoya",
+      "Naoya",
+      "Maoraga",
+      "Maoraga",
+      "Maoraga",
+      "Maoraga",
+      "Maoraga",
+      "Maoraga",
+      "Maoraga",
+      "Maoraga",
+      "Toji",
+      "Toji",
+      "Toji",
+      "Toji",
+      "Toji",
+      "Toji",
+      "Toji",
+      "Toji",
+      "Alea",
+      "Alea",
+      "Hanami",
+      "Sukuna",
+      "Alea",
+      "Toji"
+    ],
+    "hasSpaceUsed": false,
+    "notes": [
+      {
+        "winners": [
+          "exa1",
+          "exa2",
+          "exa3"
+        ],
+        "plysNote": [],
+        "winningCamp": null,
+        "name": "example"
+      },
+      {
+        "winners": [
+          "exa1",
+          "exa2",
+          "exa3"
+        ],
+        "plysNote": [],
+        "winningCamp": null,
+        "name": "example"
+      }
+    ],
+    "hasTimeUsed": false,
+    "hasMindUsed": false,
+    "specialDeathAnnounces": [
+      " Avec un purple ",
+      "§c avec un purple en pleine face ",
+      "§aavec un blue en pleine face ",
+      "§aavec un blue en pleine face ",
+      "§aavec un blue en pleine face "
+    ],
+    "pvpZoneKill": 34,
+    "hasPowerUsed": false,
+    "grades": [
+      "Toji",
+      "Toji",
+      "Toji",
+      "Toji",
+      "Toji",
+      "Toji",
+      "Toji",
+      " TOJI ",
+      "TOJI",
+      "Toji",
+      "Alea",
+      "Alea",
+      "Alea",
+      "Alea",
+      "Toji",
+      "Grade 4",
+      "Grade 3"
+    ],
+    "Name": "FITZCHE",
+    "pvpZoneDeath": 2,
+    "hasRealityUsed": false,
+    "feathers": 10800,
+    "xp": 1068,
+    "hasSoulUsed": false,
+    "_importedAt": 1775414910954
+  }
+}
