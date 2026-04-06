@@ -29,7 +29,7 @@ const fs         = require('fs');
 const path       = require('path');
 
 const app  = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 25662;
 
 // ─── CONFIG ──────────────────────────────────────────────────────
 const ADMIN_KEY  = process.env.ADMIN_KEY  || 'lgmore-admin-key-fitzche';
@@ -312,7 +312,7 @@ app.delete('/api/friends/:id', auth, (req, res) => {
 
 // ─── START ───────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`\n🐺 LgMore API → http://localhost:${PORT}`);
+  console.log(`\n🐺 LgMore API → 91.197.6.199:${PORT}`);
   console.log(`   ADMIN_KEY = ${ADMIN_KEY}`);
   console.log(`   data/     = ${DATA_DIR}\n`);
 });
